@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Controller
+namespace WindowsFormsApp1.Controller.Host
 {
-    public partial class Register : UserControl
+    public partial class MailController : UserControl
     {
-        public Register()
+        public MailController()
         {
             InitializeComponent();
-        }
-
-        private void submitButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

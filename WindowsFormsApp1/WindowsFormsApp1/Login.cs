@@ -111,6 +111,7 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
+                        Alert.show("Error: The keyword your enter does not fit", AlertType.error, x_Left, y_Top);
                         return false;
                     }
                 }

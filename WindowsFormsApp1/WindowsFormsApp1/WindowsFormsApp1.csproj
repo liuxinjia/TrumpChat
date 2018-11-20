@@ -55,11 +55,17 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuImageButton">
       <HintPath>D:\c#\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
+      <HintPath>..\..\..\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>..\..\..\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton">
       <HintPath>D:\c#\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar">
+      <HintPath>..\..\..\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>..\..\..\Bunifuy\Bunifu UI WinForms 1.8.0.1\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
@@ -75,6 +81,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
@@ -95,17 +102,29 @@
     <Compile Include="Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\Host\HostControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controller\Host\HostControl.Designer.cs">
+      <DependentUpon>HostControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Host\MailController.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controller\Host\MailController.Designer.cs">
+      <DependentUpon>MailController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\LoginControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controller\LoginControl1.Designer.cs">
       <DependentUpon>LoginControl1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Register.cs">
+    <Compile Include="Controller\Mail\sendMailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controller\Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
+    <Compile Include="Controller\Mail\sendMailControl.Designer.cs">
+      <DependentUpon>sendMailControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -135,11 +154,17 @@
     <EmbeddedResource Include="Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controller\Host\HostControl.resx">
+      <DependentUpon>HostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller\Host\MailController.resx">
+      <DependentUpon>MailController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controller\LoginControl1.resx">
       <DependentUpon>LoginControl1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
+    <EmbeddedResource Include="Controller\Mail\sendMailControl.resx">
+      <DependentUpon>sendMailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
