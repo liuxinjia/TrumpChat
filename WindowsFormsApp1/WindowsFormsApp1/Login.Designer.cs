@@ -37,13 +37,12 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelLogin = new System.Windows.Forms.Panel();
-            this.nameD_label = new System.Windows.Forms.Label();
+            this.pwTbox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.NameTBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.nameTbox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.PWTBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,12 +90,11 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.label2.Font = new System.Drawing.Font("Impact", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(98, 43);
+            this.label2.Font = new System.Drawing.Font("Impact", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(108, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 75);
+            this.label2.Size = new System.Drawing.Size(89, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "chat";
             // 
@@ -114,12 +112,11 @@
             // 
             // panelLogin
             // 
-            this.panelLogin.Controls.Add(this.PWTBox);
-            this.panelLogin.Controls.Add(this.nameD_label);
+            this.panelLogin.Controls.Add(this.pwTbox);
             this.panelLogin.Controls.Add(this.bunifuThinButton22);
-            this.panelLogin.Controls.Add(this.NameTBox);
             this.panelLogin.Controls.Add(this.label1);
             this.panelLogin.Controls.Add(this.checkBox1);
+            this.panelLogin.Controls.Add(this.nameTbox);
             this.panelLogin.Controls.Add(this.bunifuThinButton21);
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLogin.Location = new System.Drawing.Point(0, 100);
@@ -127,17 +124,48 @@
             this.panelLogin.Size = new System.Drawing.Size(842, 498);
             this.panelLogin.TabIndex = 16;
             // 
-            // nameD_label
+            // pwTbox
             // 
-            this.nameD_label.AutoSize = true;
-            this.nameD_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.nameD_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nameD_label.Location = new System.Drawing.Point(220, 149);
-            this.nameD_label.Name = "nameD_label";
-            this.nameD_label.Size = new System.Drawing.Size(94, 20);
-            this.nameD_label.TabIndex = 34;
-            this.nameD_label.Text = "User Name";
-            this.nameD_label.MouseEnter += new System.EventHandler(this.nameD_label_MouseEnter);
+            this.pwTbox.AcceptsReturn = false;
+            this.pwTbox.AcceptsTab = false;
+            this.pwTbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.pwTbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.pwTbox.BackColor = System.Drawing.Color.Transparent;
+            this.pwTbox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pwTbox.BackgroundImage")));
+            this.pwTbox.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            this.pwTbox.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.pwTbox.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.pwTbox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.pwTbox.BorderRadius = 33;
+            this.pwTbox.BorderThickness = 4;
+            this.pwTbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.pwTbox.DefaultFont = new System.Drawing.Font("Verdana", 7.8F);
+            this.pwTbox.DefaultText = "";
+            this.pwTbox.FillColor = System.Drawing.Color.White;
+            this.pwTbox.HideSelection = true;
+            this.pwTbox.IconLeft = ((System.Drawing.Image)(resources.GetObject("pwTbox.IconLeft")));
+            this.pwTbox.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.pwTbox.IconPadding = 10;
+            this.pwTbox.IconRight = null;
+            this.pwTbox.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.pwTbox.Location = new System.Drawing.Point(242, 193);
+            this.pwTbox.MaxLength = 32767;
+            this.pwTbox.MinimumSize = new System.Drawing.Size(100, 35);
+            this.pwTbox.Modified = false;
+            this.pwTbox.Name = "pwTbox";
+            this.pwTbox.PasswordChar = '.';
+            this.pwTbox.ReadOnly = false;
+            this.pwTbox.SelectedText = "";
+            this.pwTbox.SelectionLength = 0;
+            this.pwTbox.SelectionStart = 0;
+            this.pwTbox.ShortcutsEnabled = true;
+            this.pwTbox.Size = new System.Drawing.Size(376, 47);
+            this.pwTbox.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
+            this.pwTbox.TabIndex = 8;
+            this.pwTbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pwTbox.TextMarginLeft = 5;
+            this.pwTbox.TextPlaceholder = "Enter Password";
+            this.pwTbox.UseSystemPasswordChar = false;
             // 
             // bunifuThinButton22
             // 
@@ -166,27 +194,6 @@
             this.bunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton22.Click += new System.EventHandler(this.bunifuThinButton22_Click);
             // 
-            // NameTBox
-            // 
-            this.NameTBox.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.NameTBox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.NameTBox.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.NameTBox.BorderThickness = 3;
-            this.NameTBox.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.NameTBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NameTBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.NameTBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.NameTBox.isPassword = false;
-            this.NameTBox.Location = new System.Drawing.Point(214, 133);
-            this.NameTBox.Margin = new System.Windows.Forms.Padding(4);
-            this.NameTBox.MaxLength = 32767;
-            this.NameTBox.Name = "NameTBox";
-            this.NameTBox.Size = new System.Drawing.Size(435, 47);
-            this.NameTBox.TabIndex = 31;
-            this.NameTBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.NameTBox.MouseEnter += new System.EventHandler(this.NameTBox_MouseEnter_1);
-            this.NameTBox.MouseLeave += new System.EventHandler(this.NameTBox_MouseLeave);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -195,7 +202,7 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(272, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(318, 48);
+            this.label1.Size = new System.Drawing.Size(257, 39);
             this.label1.TabIndex = 28;
             this.label1.Text = "Please Login first";
             // 
@@ -205,10 +212,53 @@
             this.checkBox1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(347, 276);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(169, 29);
+            this.checkBox1.Size = new System.Drawing.Size(134, 22);
             this.checkBox1.TabIndex = 29;
             this.checkBox1.Text = "Remerber Me";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // nameTbox
+            // 
+            this.nameTbox.AcceptsReturn = false;
+            this.nameTbox.AcceptsTab = false;
+            this.nameTbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.nameTbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.nameTbox.BackColor = System.Drawing.Color.Transparent;
+            this.nameTbox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nameTbox.BackgroundImage")));
+            this.nameTbox.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            this.nameTbox.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.nameTbox.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.nameTbox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.nameTbox.BorderRadius = 33;
+            this.nameTbox.BorderThickness = 4;
+            this.nameTbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.nameTbox.DefaultFont = new System.Drawing.Font("Verdana", 7.8F);
+            this.nameTbox.DefaultText = "";
+            this.nameTbox.FillColor = System.Drawing.Color.White;
+            this.nameTbox.HideSelection = true;
+            this.nameTbox.IconLeft = ((System.Drawing.Image)(resources.GetObject("nameTbox.IconLeft")));
+            this.nameTbox.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.nameTbox.IconPadding = 10;
+            this.nameTbox.IconRight = null;
+            this.nameTbox.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.nameTbox.Location = new System.Drawing.Point(242, 118);
+            this.nameTbox.MaxLength = 32767;
+            this.nameTbox.MinimumSize = new System.Drawing.Size(100, 35);
+            this.nameTbox.Modified = false;
+            this.nameTbox.Name = "nameTbox";
+            this.nameTbox.PasswordChar = '\0';
+            this.nameTbox.ReadOnly = false;
+            this.nameTbox.SelectedText = "";
+            this.nameTbox.SelectionLength = 0;
+            this.nameTbox.SelectionStart = 0;
+            this.nameTbox.ShortcutsEnabled = true;
+            this.nameTbox.Size = new System.Drawing.Size(376, 47);
+            this.nameTbox.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
+            this.nameTbox.TabIndex = 8;
+            this.nameTbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nameTbox.TextMarginLeft = 5;
+            this.nameTbox.TextPlaceholder = "Enter Full Name";
+            this.nameTbox.UseSystemPasswordChar = false;
             // 
             // bunifuThinButton21
             // 
@@ -237,29 +287,10 @@
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
-            // PWTBox
-            // 
-            this.PWTBox.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.PWTBox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.PWTBox.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.PWTBox.BorderThickness = 3;
-            this.PWTBox.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.PWTBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.PWTBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.PWTBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PWTBox.isPassword = true;
-            this.PWTBox.Location = new System.Drawing.Point(214, 206);
-            this.PWTBox.Margin = new System.Windows.Forms.Padding(4);
-            this.PWTBox.MaxLength = 32767;
-            this.PWTBox.Name = "PWTBox";
-            this.PWTBox.Size = new System.Drawing.Size(435, 47);
-            this.PWTBox.TabIndex = 35;
-            this.PWTBox.Text = "12345678910";
-            this.PWTBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
             // loginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 598);
             this.Controls.Add(this.panelLogin);
@@ -270,7 +301,6 @@
             this.Name = "loginForm";
             this.Text = "Login";
             this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelLogin.ResumeLayout(false);
@@ -284,16 +314,15 @@
         private System.Windows.Forms.Panel panelHeader;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Panel panelLogin;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton22;
-        private Bunifu.Framework.UI.BunifuMetroTextbox NameTBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
-        private System.Windows.Forms.Label nameD_label;
-        private Bunifu.Framework.UI.BunifuMetroTextbox PWTBox;
+        private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox nameTbox;
+        private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox pwTbox;
+        private System.Windows.Forms.Label label2;
     }
 }

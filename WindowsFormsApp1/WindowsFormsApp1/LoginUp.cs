@@ -26,45 +26,66 @@ namespace WindowsFormsApp1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            FormMain fMain = new FormMain();
-            fMain.Show();
 
             UpdateUserTabel();
-            this.Dispose();
-            this.Close();
         }
 
         private void UpdateUserTabel()
         {
-            string User_name = Uname_MBox.Text;
-            string Nick_name = Nname_MBox.Text;
-            string Password = Pword_MBox.Text;
+            int y_Top = 0;
+            int x_Left = 0;
+            x_Left = this.Bounds.Width / 2;
+            y_Top = this.Bounds.Height / 2 - 20;
+
+            string User_name = nameTbox.Text;
+            string Nick_name = nickTbox.Text;
+            string Password = pwTbox.Text;
             
-            if (confirmPW_MBox.Text != Password)
+            if (cptTbox.Text != Password)
             {
                 MessageBox.Show("The password is not the same ");
+                //Alert.show("The password is not the same ", AlertType.error);
                 return;
             }
 
             string Selectquery = @"SELECT count(*) FROM tchat.user; ";
             int user_ID = 0;
-            SelectQueryAdapter(Selectquery,ref user_ID);
+            string returnMessage = "";
+            if (!SelectQueryAdapter(Selectquery, ref returnMessage, QueryEnum.Scalar))
+                return;
+            user_ID = Convert.ToInt32(returnMessage);
 
-
+            Selectquery = @"select nickName from user
+            where nickName  = '" + Nick_name + "';";
+            SelectQueryAdapter(Selectquery, ref returnMessage, QueryEnum.Reader);
+            if (returnMessage == Nick_name)
+            {
+                Alert.show("Alread has the nickname, choose the other one", AlertType.warning, x_Left, y_Top);
+                return;
+            }
             //string Updatequery = @"insert into user
             //values('van Persie', 'Flying DutchMan', 'Robin', '20'); ";
 
             string Updatequery = @"insert into user values('" + User_name + "',' "
                 + Nick_name + "','" + Password + "','" + user_ID.ToString() + "');";
-            UpdateQueryAdapter(Updatequery);
+            if (UpdateQueryAdapter(Updatequery))
+            {
+                this.Dispose();
+                this.Close();
+                FormMain fMain = new FormMain();
+                fMain.Show();
+
+            }
+            else
+                return;
         }
 
-        public static void UpdateQueryAdapter(string Updatequery)
+        public static bool UpdateQueryAdapter(string Updatequery)
         {
             if (Updatequery == "")
             {
                 Console.WriteLine("No query sentence!");
-                return;
+                return false;
             }
             string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
                  "persistsecurityinfo=True;database=tchat";
@@ -94,15 +115,18 @@ namespace WindowsFormsApp1
             catch (Exception e)
             {
                 MessageBox.Show("Register Error: " + e.Message);
+               // return false;
             }
+
+            return true;
         }
 
-        public static void SelectQueryAdapter(string query,ref int returnNum)
+        public static bool SelectQueryAdapter(string query, ref string returnMessage, QueryEnum q)
         {
             if (query == "")
             {
                 Console.WriteLine("No query sentence!");
-                return;
+                return false;
             }
             string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
                  "persistsecurityinfo=True;database=tchat";
@@ -114,22 +138,49 @@ namespace WindowsFormsApp1
             };
 
 
-            try
+            if (q == QueryEnum.Scalar)
             {
-                dataBaseConnection.Open();
-                returnNum = Convert.ToInt32(commandDataBase.ExecuteScalar()) + 1;
-                dataBaseConnection.Close();
+                try
+                {
+                    int returnNum = 0;
+                    dataBaseConnection.Open();
+                    returnNum = Convert.ToInt32(commandDataBase.ExecuteScalar()) + 1;
+                    returnMessage = Convert.ToString(returnNum);
+                    dataBaseConnection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Query error: " + e.Message);
+                    dataBaseConnection.Close();
+                    return false;
+                }
             }
-            catch(Exception e)
+            else if (q == QueryEnum.Reader)
             {
-                MessageBox.Show("Query error: " + e.Message);
-                dataBaseConnection.Close();
+                try
+                {
+                    dataBaseConnection.Open();
+                    returnMessage = commandDataBase.ExecuteScalar().ToString();
+                    dataBaseConnection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Query error: " + e.Message);
+                    dataBaseConnection.Close();
+                }
             }
+
+            return true;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

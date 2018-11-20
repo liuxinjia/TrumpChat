@@ -45,20 +45,27 @@ namespace WindowsFormsApp1
 
         private bool CheckUserDate()
         {
-            string User_Name = NameTBox.Text;
-            string password = PWTBox.Text;
+            int y_Top = 0;
+            int x_Left = 0;
+            x_Left = this.Bounds.Width / 2;
+            y_Top = this.Bounds.Height / 2 - 20;
+
+            string User_Name = nameTbox.Text;
+            string password = pwTbox.Text;
 
             string selectAll = @"select count(*) from user";
             QueryEnum q = QueryEnum.Scalar;
             if (RunQuery(selectAll, q))
-                MessageBox.Show("Congratulations! You are our first user");
-
+            {
+                Alert.show("Congratulations! You are our first user", AlertType.success,x_Left, y_Top);
+            }
             string selectName = @"select* from user where User_name  = '" + User_Name + "';";
             q = QueryEnum.Reader;
             bool restart = RunQuery(selectName, q, password)? false : true;
             if (!restart)
             {
-                MessageBox.Show("Welcome back");
+                //MessageBox.Show("Welcome back");
+                Alert.show("Welcome back", AlertType.success, x_Left, y_Top);
             }
 
             return restart;
@@ -66,6 +73,11 @@ namespace WindowsFormsApp1
 
         private bool RunQuery(string query, QueryEnum q, string password = null)
         {
+            int y_Top = 0;
+            int x_Left = 0;
+            x_Left = this.Bounds.Width / 2;
+            y_Top = this.Bounds.Height / 2 - 20;
+
             string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
             "persistsecurityinfo=True;database=tchat";
 
@@ -104,10 +116,13 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Please login up first!"+ e.Message);
-
+                    //MessageBox.Show("Please login up first!"+ e.Message);
+                    // AlertForm.showAlert("Please login up first!", AlertType.info);
                     LoginUp register = new LoginUp();
                     register.Show();
+                    x_Left = register.Bounds.Width / 4;
+                    y_Top = register.Bounds.Height / 4 - 20;
+                    Alert.show("Please login up first!", AlertType.info,x_Left, y_Top);
                     this.Visible = false;
                     this.Enabled = false;
                 }
@@ -122,21 +137,6 @@ namespace WindowsFormsApp1
             register.Show();
             this.Visible = false;
             this.Enabled = false;
-        }
-        private void NameTBox_MouseEnter_1(object sender, EventArgs e)
-        {
-            nameD_label.Hide();
-        }
-
-        private void NameTBox_MouseLeave(object sender, EventArgs e)
-        {
-            if (NameTBox.Text == "")
-                nameD_label.Show();
-        }
-
-        private void nameD_label_MouseEnter(object sender, EventArgs e)
-        {
-            nameD_label.Hide();
         }
     }
 }
