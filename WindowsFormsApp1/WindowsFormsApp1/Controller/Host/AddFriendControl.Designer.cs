@@ -34,6 +34,7 @@
             this.searchTBox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_adding = new System.Windows.Forms.Panel();
+            this.label_name = new System.Windows.Forms.Label();
             this.panel_Tool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
             this.panel1.SuspendLayout();
@@ -41,6 +42,7 @@
             // 
             // panel_Tool
             // 
+            this.panel_Tool.Controls.Add(this.label_name);
             this.panel_Tool.Controls.Add(this.closePBOx);
             this.panel_Tool.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Tool.Location = new System.Drawing.Point(0, 0);
@@ -58,6 +60,7 @@
             this.closePBOx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closePBOx.TabIndex = 1;
             this.closePBOx.TabStop = false;
+            this.closePBOx.Click += new System.EventHandler(this.closePBOx_Click);
             // 
             // searchTBox
             // 
@@ -116,11 +119,23 @@
             // 
             // panel_adding
             // 
+            this.panel_adding.AllowDrop = true;
             this.panel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_adding.Location = new System.Drawing.Point(0, 85);
             this.panel_adding.Name = "panel_adding";
             this.panel_adding.Size = new System.Drawing.Size(300, 215);
             this.panel_adding.TabIndex = 4;
+            // 
+            // label_name
+            // 
+            this.label_name.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_name.Font = new System.Drawing.Font("Verdana", 32F);
+            this.label_name.Location = new System.Drawing.Point(0, 0);
+            this.label_name.Name = "label_name";
+            this.label_name.Size = new System.Drawing.Size(267, 55);
+            this.label_name.TabIndex = 0;
+            this.label_name.Text = "label1";
+            this.label_name.TextChanged += new System.EventHandler(this.label_name_TextChanged);
             // 
             // AddFriendControl
             // 
@@ -148,5 +163,6 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchTBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_adding;
+        private System.Windows.Forms.Label label_name;
     }
 }

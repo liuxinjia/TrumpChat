@@ -78,7 +78,7 @@ namespace WindowsFormsApp1.Controller.Host
                     BunifuFlatButton currentButton = new BunifuFlatButton();
                     currentButton.Dock = DockStyle.Top;
                     currentButton.AutoSize = true;
-                    currentButton.Name = friend.NickName;
+                    currentButton.Name = friend.User_name;
                     currentButton.Text = friend.NickName;
                     currentButton.BackColor = Color.FromArgb(i * 10, i * 30, i * 50);
 
@@ -90,7 +90,22 @@ namespace WindowsFormsApp1.Controller.Host
 
         private void currentButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BunifuFlatButton button = sender as BunifuFlatButton;
+            label_name.Text = button.Text.ToString();
+        }
+
+        private void label_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closePBOx_Click(object sender, EventArgs e)
+        {
+            this.panel_adding.Controls.Clear();
+            this.panel_Tool.Controls.Clear();
+            this.panel1.Controls.Clear();
+            this.Enabled = false;
+            this.Dispose();
         }
     }
 }
