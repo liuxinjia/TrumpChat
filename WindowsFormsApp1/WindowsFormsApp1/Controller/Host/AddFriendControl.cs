@@ -103,6 +103,14 @@ namespace WindowsFormsApp1.Controller.Host
             if (list.Count != 1) { MessageBox.Show("Not found");  return; }
 
             User friend = (User)list[0];
+            for (int i =0; i< Program.localUser.Friends.Count; i++)
+            {
+                User cmp = (User)Program.localUser.Friends[i];
+                if (String.Compare(nameLabel.Text.ToString(), cmp.User_name.ToString()) == 0)
+                {
+                    return;
+                }
+            }
             Program.localUser.makingFriends(friend);
         }
 

@@ -13,6 +13,9 @@ namespace WindowsFormsApp1
         private ArrayList friends;
         private User localUser;
 
+        internal ArrayList Friends { get => friends; }
+        internal User LocalUser { get => localUser;}
+
         public Client(User me)
         {
             localUser = me;
