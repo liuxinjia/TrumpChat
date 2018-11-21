@@ -512,6 +512,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.Text = resources.GetString("$this.Text");
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.contentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelHead.ResumeLayout(false);

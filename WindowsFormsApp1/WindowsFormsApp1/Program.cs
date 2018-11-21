@@ -8,6 +8,8 @@ namespace WindowsFormsApp1
 {
     static class Program
     {
+        //public static int i = 0;
+        public static Client localUser;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>

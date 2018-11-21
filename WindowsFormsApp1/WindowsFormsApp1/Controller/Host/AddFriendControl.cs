@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Controller.Host
         {
             InitializeComponent();
             AutoCompleteText();
+            //Program.i++;
         }
 
         private void AutoCompleteText()
@@ -91,12 +92,18 @@ namespace WindowsFormsApp1.Controller.Host
         private void currentButton_Click(object sender, EventArgs e)
         {
             BunifuFlatButton button = sender as BunifuFlatButton;
-            label_name.Text = button.Text.ToString();
+            label_name.Text = button.Name.ToString();
         }
 
         private void label_name_TextChanged(object sender, EventArgs e)
         {
+            Label nameLabel = sender as Label;
+            string query = "select *from user where User_name = '" + nameLabel.Text.ToString() + "';";
+            ArrayList list = User.SelectQueryReader(query);
+            if (list.Count != 1) { MessageBox.Show("Not found");  return; }
 
+            User friend = (User)list[0];
+            Program.localUser.makingFriends(friend);
         }
 
         private void closePBOx_Click(object sender, EventArgs e)

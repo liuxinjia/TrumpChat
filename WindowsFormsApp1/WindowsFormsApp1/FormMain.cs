@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            Client testClient = Program.localUser;
             if (friendsPanel.Visible)
             {
                 contentHide.HideSync(friendsPanel);
@@ -71,6 +72,11 @@ namespace WindowsFormsApp1
             newFriend.Dock = DockStyle.Left;
             newFriend.Name = "add";
             
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Client testClien = Program.localUser;
         }
     }
 }

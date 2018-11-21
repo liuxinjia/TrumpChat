@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,14 +26,20 @@ namespace WindowsFormsApp1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
+            if (UpdateUserTabel() == false) { return; }
+            string User_Name = nameTbox.Text;
 
-           if( UpdateUserTabel())
-            {
-                this.Dispose();
-                this.Close();
-                FormMain fMain = new FormMain();
-                fMain.Show();
-            }
+            string query = @"select *from user where User_name = '" + User_Name + "';";
+            ArrayList list = User.SelectQueryReader(query);
+            if (list.Count != 1) { return; }
+
+            User me = (User)list[0];
+            Program.localUser = new Client(me);
+
+            FormMain mainForm = new FormMain();
+            mainForm.Show();
+            this.Dispose();
+            this.Close();
         }
 
         private bool UpdateUserTabel()
