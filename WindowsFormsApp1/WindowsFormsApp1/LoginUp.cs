@@ -11,8 +11,6 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-    public enum QueryEnum { Scalar, NonQuery, Reader }
-
     public partial class LoginUp : Form
     {
 

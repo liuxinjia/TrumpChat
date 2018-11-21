@@ -54,6 +54,7 @@
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contentShow = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.addFriend = new System.Windows.Forms.PictureBox();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelHead.SuspendLayout();
@@ -64,6 +65,7 @@
             this.mainPanel.SuspendLayout();
             this.friendsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -174,6 +176,7 @@
             // panelHead
             // 
             this.panelHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.panelHead.Controls.Add(this.addFriend);
             this.panelHead.Controls.Add(this.panel2);
             this.panelHead.Controls.Add(this.pictureBox3);
             this.contentShow.SetDecoration(this.panelHead, BunifuAnimatorNS.DecorationType.None);
@@ -226,7 +229,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.contentHide.SetDecoration(this.pictureBox3, BunifuAnimatorNS.DecorationType.None);
             this.contentShow.SetDecoration(this.pictureBox3, BunifuAnimatorNS.DecorationType.None);
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
@@ -473,6 +476,20 @@
             animation2.TransparencyCoeff = 0F;
             this.contentShow.DefaultAnimation = animation2;
             // 
+            // addFriend
+            // 
+            this.addFriend.BackColor = System.Drawing.Color.Transparent;
+            this.contentHide.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
+            this.addFriend.Image = ((System.Drawing.Image)(resources.GetObject("addFriend.Image")));
+            this.addFriend.Location = new System.Drawing.Point(167, 69);
+            this.addFriend.Name = "addFriend";
+            this.addFriend.Size = new System.Drawing.Size(33, 36);
+            this.addFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.addFriend.TabIndex = 5;
+            this.addFriend.TabStop = false;
+            this.addFriend.Click += new System.EventHandler(this.addFriend_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -498,6 +515,7 @@
             this.friendsPanel.ResumeLayout(false);
             this.friendsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -525,5 +543,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton5;
         private Controller.Host.HostControl hostControl1;
         private Controller.Mail.sendMailControl sendMailControl1;
+        private System.Windows.Forms.PictureBox addFriend;
     }
 }

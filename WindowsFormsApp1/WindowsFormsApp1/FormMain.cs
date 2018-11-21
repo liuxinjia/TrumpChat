@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class FormMain : Form
     {
+
         public FormMain()
         {
             InitializeComponent();
@@ -61,6 +62,11 @@ namespace WindowsFormsApp1
         private void closePBOx_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void addFriend_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
