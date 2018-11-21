@@ -74,13 +74,12 @@ namespace WindowsFormsApp1.Controller.Host
                 for (int j = 0; j < friends.Count; j++)
                 {
                     int i = j % 3;
-                    //currentButton.Parent = FormMain.newFriend;
                     BunifuFlatButton currentButton = new BunifuFlatButton();
                     currentButton.Dock = DockStyle.Top;
                     currentButton.AutoSize = true;
                     currentButton.Name = friend.NickName;
                     currentButton.Text = friend.NickName;
-                    currentButton.BackColor = Color.FromArgb(i * 10, i * 30, i * 50);
+                    currentButton.BackColor = Color.FromArgb(i * 10, i * 15, i * 30);
 
                     panel_adding.Controls.Add(currentButton);
                     currentButton.Click += new System.EventHandler(currentButton_Click);
