@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.contentPanel = new System.Windows.Forms.Panel();
             this.bunifuTileButton3 = new Bunifu.Framework.UI.BunifuTileButton();
@@ -46,14 +46,14 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.contentHide = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
+            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
             this.friendsPanel = new System.Windows.Forms.Panel();
             this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contentShow = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
-            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelHead.SuspendLayout();
@@ -249,22 +249,22 @@
             // 
             this.contentHide.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
             this.contentHide.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.contentHide.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.contentHide.DefaultAnimation = animation1;
             // 
             // mainPanel
             // 
@@ -278,6 +278,30 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1070, 644);
             this.mainPanel.TabIndex = 3;
+            // 
+            // hostControl1
+            // 
+            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.hostControl1.Location = new System.Drawing.Point(200, 0);
+            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.hostControl1.Name = "hostControl1";
+            this.hostControl1.Size = new System.Drawing.Size(870, 644);
+            this.hostControl1.TabIndex = 7;
+            // 
+            // sendMailControl1
+            // 
+            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
+            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.sendMailControl1.Name = "sendMailControl1";
+            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
+            this.sendMailControl1.TabIndex = 6;
             // 
             // friendsPanel
             // 
@@ -320,14 +344,14 @@
             this.bunifuFlatButton5.IconVisible = true;
             this.bunifuFlatButton5.IconZoom = 60D;
             this.bunifuFlatButton5.IsTab = true;
-            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 290);
+            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 302);
             this.bunifuFlatButton5.Margin = new System.Windows.Forms.Padding(28);
             this.bunifuFlatButton5.Name = "bunifuFlatButton5";
             this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton5.selected = true;
-            this.bunifuFlatButton5.Size = new System.Drawing.Size(200, 60);
+            this.bunifuFlatButton5.Size = new System.Drawing.Size(200, 66);
             this.bunifuFlatButton5.TabIndex = 9;
             this.bunifuFlatButton5.Text = "NickName";
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -360,14 +384,14 @@
             this.bunifuFlatButton4.IconVisible = true;
             this.bunifuFlatButton4.IconZoom = 60D;
             this.bunifuFlatButton4.IsTab = true;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 230);
+            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 236);
             this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(21);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton4.selected = true;
-            this.bunifuFlatButton4.Size = new System.Drawing.Size(200, 60);
+            this.bunifuFlatButton4.Size = new System.Drawing.Size(200, 66);
             this.bunifuFlatButton4.TabIndex = 8;
             this.bunifuFlatButton4.Text = "NickName";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -407,7 +431,7 @@
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(92)))), ((int)(((byte)(158)))));
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton3.selected = true;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(200, 60);
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(200, 66);
             this.bunifuFlatButton3.TabIndex = 7;
             this.bunifuFlatButton3.Text = "NickName";
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -432,50 +456,26 @@
             // 
             this.contentShow.AnimationType = BunifuAnimatorNS.AnimationType.Leaf;
             this.contentShow.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 1F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 0;
-            animation4.Padding = new System.Windows.Forms.Padding(0);
-            animation4.RotateCoeff = 0F;
-            animation4.RotateLimit = 0F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 0F;
-            animation4.TransparencyCoeff = 0F;
-            this.contentShow.DefaultAnimation = animation4;
-            // 
-            // sendMailControl1
-            // 
-            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
-            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.sendMailControl1.Name = "sendMailControl1";
-            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
-            this.sendMailControl1.TabIndex = 6;
-            // 
-            // hostControl1
-            // 
-            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.hostControl1.Location = new System.Drawing.Point(200, 0);
-            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.hostControl1.Name = "hostControl1";
-            this.hostControl1.Size = new System.Drawing.Size(870, 644);
-            this.hostControl1.TabIndex = 7;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 1F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.contentShow.DefaultAnimation = animation2;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 749);
             this.Controls.Add(this.mainPanel);
@@ -486,7 +486,7 @@
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
-            this.Text = "ll";
+            this.Text = resources.GetString("$this.Text");
             this.contentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelHead.ResumeLayout(false);
