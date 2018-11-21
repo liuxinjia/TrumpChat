@@ -117,6 +117,64 @@ namespace WindowsFormsApp1
             return true;
         }
 
+        //public static User[] SelectQueryAdapter(string query)
+        //{
+        //    if (query == "")
+        //    {
+        //        Console.WriteLine("No query sentence!");
+        //    }
+        //    string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
+        //         "persistsecurityinfo=True;database=tchat";
+
+        //    MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
+        //    MySqlCommand commandDataBase = new MySqlCommand(query, dataBaseConnection)
+        //    {
+        //        CommandTimeout = 60
+        //    };
+        //    dataBaseConnection.Open();
+
+        //    //MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandDataBase);
+        //    MySqlDataReader dataReader = new MySqlDataReader(commandDataBase);
+        //    DataSet dataSet = new DataSet();
+
+        //    User[] returnUser = new User[1];
+        //    returnUser[0] = new User();
+
+        //    try
+        //    {
+        //        dataAdapter.Fill(dataSet);
+        //        DataTable dataTable = dataSet.Tables[0];
+        //        returnUser = new User[dataTable.Rows.Count];
+
+        //        try
+        //        {
+        //            //for (int i = 0; i<dataTable.Rows.Count; i++)
+        //            //{
+        //            //    MessageBox.Show("Something wrong here !" );
+
+        //            //    returnUser[i].user_name = dataTable.Rows[i][0].ToString();
+        //            //    returnUser[i].nickName = dataTable.Rows[i][1].ToString();
+        //            //    returnUser[i].password = dataTable.Rows[i][2].ToString();
+        //            //    returnUser[i].user_id = Convert.ToInt32( dataTable.Rows[i][3]);
+        //            //    returnUser[i].errorType = userErrorType.Exists;
+        //            //}
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            MessageBox.Show("Something wrong here !" + e.Message);
+        //            returnUser[0].errorType = userErrorType.Notexists;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        returnUser[0].errorType = userErrorType.Notexists;
+        //        MessageBox.Show(e.Message);
+        //    }
+
+        //    dataBaseConnection.Close();
+        //    return returnUser;
+        //}
+
         public static userErrorType RunQuery(string query, QueryEnum q, string password = null)
         {
 
@@ -210,25 +268,6 @@ namespace WindowsFormsApp1
             return user;
         }
 
-        public static User createClient(string name)
-        {
-            User localUser = new User();
-            string query = @"select *from user where User_name = '" + name + "' ;";
-
-            ArrayList lists = User.SelectQueryReader(query);
-
-            if (lists.Count == 1)
-            {
-                localUser = (User)lists[0];
-            }
-            else
-            {
-                MessageBox.Show("Login error!");
-            }
-
-            return localUser;
-        }
-
         private static User ReadSingleRow(IDataRecord reader)
         {
             User user = new User();
@@ -239,6 +278,5 @@ namespace WindowsFormsApp1
             user.errorType = userErrorType.Exists;
             return user;
         }
-
     }
 }

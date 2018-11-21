@@ -8,8 +8,6 @@ namespace WindowsFormsApp1
 {
     static class Program
     {
-        public static Client localUser = new Client(new User());
-
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -19,8 +17,6 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new loginForm());
-
         }
-
     }
 }

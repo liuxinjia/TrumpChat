@@ -72,4 +72,3 @@ D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache

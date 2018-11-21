@@ -102,7 +102,6 @@
     <Compile Include="Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
     <Compile Include="Controller\Host\AddFriendControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

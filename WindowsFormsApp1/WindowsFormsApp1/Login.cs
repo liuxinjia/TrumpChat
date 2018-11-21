@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +11,6 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-
     public partial class loginForm : Form
     {
         public loginForm()
@@ -31,21 +29,17 @@ namespace WindowsFormsApp1
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            if (CheckUserData())
+            if (CheckUserDate())
             {
                 FormMain mainForm = new FormMain();
                 mainForm.Show();
                 this.Visible = false;
                 this.Enabled = false;
-                Program.localUser = new Client(new User());
             }
 
-            string User_Name = nameTbox.Text;
-            Program.localUser = new Client(User.createClient(User_Name));
         }
 
-
-        private bool CheckUserData()
+        private bool CheckUserDate()
         {
             int y_Top = 0;
             int x_Left = 0;
@@ -64,7 +58,12 @@ namespace WindowsFormsApp1
 
             string selectName = @"select* from user where User_name  = '" + User_Name + "';";
             q = QueryEnum.Reader;
-
+            //bool restart = RunQuery(selectName, q, password)? false : true;
+            //if (!restart)
+            //{
+            //    //MessageBox.Show("Welcome back");
+            //    Alert.show("Welcome back", AlertType.success, x_Left, y_Top);
+            //}
             userErrorType loginErrorType = userErrorType.Notexists;
             loginErrorType = User.RunQuery(selectName, q, password);
             if (loginErrorType == userErrorType.Notexists)
