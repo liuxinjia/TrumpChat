@@ -31,11 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFriendControl));
             this.panel_Tool = new System.Windows.Forms.Panel();
             this.closePBOx = new System.Windows.Forms.PictureBox();
-            this.panel_adding = new System.Windows.Forms.Panel();
             this.searchTBox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_adding = new System.Windows.Forms.Panel();
             this.panel_Tool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
-            this.panel_adding.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Tool
@@ -58,15 +59,6 @@
             this.closePBOx.TabIndex = 1;
             this.closePBOx.TabStop = false;
             // 
-            // panel_adding
-            // 
-            this.panel_adding.Controls.Add(this.searchTBox);
-            this.panel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_adding.Location = new System.Drawing.Point(0, 50);
-            this.panel_adding.Name = "panel_adding";
-            this.panel_adding.Size = new System.Drawing.Size(300, 250);
-            this.panel_adding.TabIndex = 1;
-            // 
             // searchTBox
             // 
             this.searchTBox.AcceptsReturn = false;
@@ -85,7 +77,7 @@
             this.searchTBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.searchTBox.DefaultFont = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTBox.DefaultText = "";
-            this.searchTBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchTBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchTBox.FillColor = System.Drawing.Color.White;
             this.searchTBox.HideSelection = true;
             this.searchTBox.IconLeft = ((System.Drawing.Image)(resources.GetObject("searchTBox.IconLeft")));
@@ -113,11 +105,29 @@
             this.searchTBox.UseSystemPasswordChar = false;
             this.searchTBox.TextChange += new System.EventHandler(this.searchTBox_TextChange);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.searchTBox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 35);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel_adding
+            // 
+            this.panel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_adding.Location = new System.Drawing.Point(0, 85);
+            this.panel_adding.Name = "panel_adding";
+            this.panel_adding.Size = new System.Drawing.Size(300, 215);
+            this.panel_adding.TabIndex = 4;
+            // 
             // AddFriendControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel_adding);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_Tool);
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -125,8 +135,8 @@
             this.Size = new System.Drawing.Size(300, 300);
             this.panel_Tool.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).EndInit();
-            this.panel_adding.ResumeLayout(false);
-            this.panel_adding.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,7 +145,8 @@
 
         private System.Windows.Forms.Panel panel_Tool;
         private System.Windows.Forms.PictureBox closePBOx;
-        private System.Windows.Forms.Panel panel_adding;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchTBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_adding;
     }
 }

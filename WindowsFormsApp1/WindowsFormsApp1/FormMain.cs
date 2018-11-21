@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controller.Host;
 
 namespace WindowsFormsApp1
 {
     public partial class FormMain : Form
     {
-
         public FormMain()
         {
             InitializeComponent();
@@ -66,7 +66,11 @@ namespace WindowsFormsApp1
 
         private void addFriend_Click(object sender, EventArgs e)
         {
-
+            AddFriendControl newFriend = new AddFriendControl();
+            newFriend.Parent = this;
+            newFriend.Dock = DockStyle.Left;
+            newFriend.Name = "add";
+            
         }
     }
 }

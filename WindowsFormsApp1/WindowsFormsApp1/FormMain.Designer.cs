@@ -39,6 +39,7 @@
             this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelHead = new System.Windows.Forms.Panel();
+            this.addFriend = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.closePBOx = new System.Windows.Forms.PictureBox();
             this.contentPBox = new System.Windows.Forms.PictureBox();
@@ -54,10 +55,11 @@
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contentShow = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.addFriend = new System.Windows.Forms.PictureBox();
+            this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelHead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contentPBox)).BeginInit();
@@ -65,7 +67,6 @@
             this.mainPanel.SuspendLayout();
             this.friendsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -186,6 +187,20 @@
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(1070, 105);
             this.panelHead.TabIndex = 1;
+            // 
+            // addFriend
+            // 
+            this.addFriend.BackColor = System.Drawing.Color.Transparent;
+            this.contentHide.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
+            this.addFriend.Image = ((System.Drawing.Image)(resources.GetObject("addFriend.Image")));
+            this.addFriend.Location = new System.Drawing.Point(167, 69);
+            this.addFriend.Name = "addFriend";
+            this.addFriend.Size = new System.Drawing.Size(33, 36);
+            this.addFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.addFriend.TabIndex = 5;
+            this.addFriend.TabStop = false;
+            this.addFriend.Click += new System.EventHandler(this.addFriend_Click);
             // 
             // panel2
             // 
@@ -476,19 +491,12 @@
             animation2.TransparencyCoeff = 0F;
             this.contentShow.DefaultAnimation = animation2;
             // 
-            // addFriend
+            // bunifuDragControl2
             // 
-            this.addFriend.BackColor = System.Drawing.Color.Transparent;
-            this.contentHide.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.addFriend, BunifuAnimatorNS.DecorationType.None);
-            this.addFriend.Image = ((System.Drawing.Image)(resources.GetObject("addFriend.Image")));
-            this.addFriend.Location = new System.Drawing.Point(167, 69);
-            this.addFriend.Name = "addFriend";
-            this.addFriend.Size = new System.Drawing.Size(33, 36);
-            this.addFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.addFriend.TabIndex = 5;
-            this.addFriend.TabStop = false;
-            this.addFriend.Click += new System.EventHandler(this.addFriend_Click);
+            this.bunifuDragControl2.Fixed = true;
+            this.bunifuDragControl2.Horizontal = true;
+            this.bunifuDragControl2.TargetControl = this.panel2;
+            this.bunifuDragControl2.Vertical = true;
             // 
             // FormMain
             // 
@@ -507,6 +515,7 @@
             this.contentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelHead.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contentPBox)).EndInit();
@@ -515,7 +524,6 @@
             this.friendsPanel.ResumeLayout(false);
             this.friendsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addFriend)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -544,5 +552,6 @@
         private Controller.Host.HostControl hostControl1;
         private Controller.Mail.sendMailControl sendMailControl1;
         private System.Windows.Forms.PictureBox addFriend;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl2;
     }
 }
