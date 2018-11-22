@@ -89,8 +89,7 @@ namespace WindowsFormsApp1
 
             Selectquery = @"select nickName from user
             where nickName  = '" + Nick_name + "';";
-            User.SelectQueryAdapter(Selectquery, ref returnMessage, QueryEnum.Reader);
-            if (returnMessage == Nick_name)
+            if (User.SelectQueryAdapter(Selectquery, ref returnMessage, QueryEnum.Reader))
             {
                 Alert.show("Alread has the nickname, choose the other one", AlertType.warning, x_Left, y_Top);
                 return false;

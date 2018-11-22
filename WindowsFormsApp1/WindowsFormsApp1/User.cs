@@ -39,30 +39,31 @@ namespace WindowsFormsApp1
                  "persistsecurityinfo=True;database=tchat";
 
             MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
-            MySqlCommand commandDataBase = new MySqlCommand(Updatequery, dataBaseConnection)
-            {
-                CommandTimeout = 60
-            };
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandDataBase);
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
 
 
             try
             {
                 dataBaseConnection.Open();
-                dataAdapter.Fill(dataSet);
 
                 dataAdapter.SelectCommand = new MySqlCommand(Updatequery, dataBaseConnection);
                 MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
-                dataBaseConnection.Close();
+
+                dataAdapter.Fill(dataSet);
+
                 dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
                 dataAdapter.Update(dataSet);
+
                 commandBuilder.Dispose();
+                dataBaseConnection.Close();
+
             }
             catch (Exception e)
             {
                 MessageBox.Show("Update Error: " + e.Message);
+                dataBaseConnection.Close();
                 // return false;
             }
 
@@ -84,14 +85,14 @@ namespace WindowsFormsApp1
             {
                 CommandTimeout = 60
             };
-            dataBaseConnection.Open();
 
             if (q == QueryEnum.Scalar)
             {
                 try
                 {
+                    dataBaseConnection.Open();
                     int returnNum = 0;
-                    returnNum = Convert.ToInt32(commandDataBase.ExecuteScalar()) + 1;
+                    returnNum = Convert.ToInt32(commandDataBase.ExecuteScalar());
                     returnMessage = Convert.ToString(returnNum);
                 }
                 catch (Exception e)
@@ -104,11 +105,12 @@ namespace WindowsFormsApp1
             {
                 try
                 {
+                    dataBaseConnection.Open();
                     returnMessage = commandDataBase.ExecuteScalar().ToString();
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Query error: " + e.Message);
+                    //MessageBox.Show("Query error: " + e.Message);
                     return false;
                 }
             }
@@ -116,64 +118,6 @@ namespace WindowsFormsApp1
             dataBaseConnection.Close();
             return true;
         }
-
-        //public static User[] SelectQueryAdapter(string query)
-        //{
-        //    if (query == "")
-        //    {
-        //        Console.WriteLine("No query sentence!");
-        //    }
-        //    string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
-        //         "persistsecurityinfo=True;database=tchat";
-
-        //    MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
-        //    MySqlCommand commandDataBase = new MySqlCommand(query, dataBaseConnection)
-        //    {
-        //        CommandTimeout = 60
-        //    };
-        //    dataBaseConnection.Open();
-
-        //    //MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandDataBase);
-        //    MySqlDataReader dataReader = new MySqlDataReader(commandDataBase);
-        //    DataSet dataSet = new DataSet();
-
-        //    User[] returnUser = new User[1];
-        //    returnUser[0] = new User();
-
-        //    try
-        //    {
-        //        dataAdapter.Fill(dataSet);
-        //        DataTable dataTable = dataSet.Tables[0];
-        //        returnUser = new User[dataTable.Rows.Count];
-
-        //        try
-        //        {
-        //            //for (int i = 0; i<dataTable.Rows.Count; i++)
-        //            //{
-        //            //    MessageBox.Show("Something wrong here !" );
-
-        //            //    returnUser[i].user_name = dataTable.Rows[i][0].ToString();
-        //            //    returnUser[i].nickName = dataTable.Rows[i][1].ToString();
-        //            //    returnUser[i].password = dataTable.Rows[i][2].ToString();
-        //            //    returnUser[i].user_id = Convert.ToInt32( dataTable.Rows[i][3]);
-        //            //    returnUser[i].errorType = userErrorType.Exists;
-        //            //}
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            MessageBox.Show("Something wrong here !" + e.Message);
-        //            returnUser[0].errorType = userErrorType.Notexists;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        returnUser[0].errorType = userErrorType.Notexists;
-        //        MessageBox.Show(e.Message);
-        //    }
-
-        //    dataBaseConnection.Close();
-        //    return returnUser;
-        //}
 
         public static userErrorType RunQuery(string query, QueryEnum q, string password = null)
         {

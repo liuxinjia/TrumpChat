@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,21 @@ namespace WindowsFormsApp1
         {
             localUser = me;
             friends = new ArrayList();
+
+            //creatLocalUserTable();
         }
+
+        private void creatLocalUserTable()
+        {
+            string query = "SELECT count(*) FROM tchat.localuser;";
+            QueryEnum q = QueryEnum.Scalar;
+            string count = "";
+            if (User.SelectQueryAdapter(query, ref count, q))
+            {
+
+            }
+        }
+
         public Client()
         {
             MessageBox.Show("Error initialize Client");

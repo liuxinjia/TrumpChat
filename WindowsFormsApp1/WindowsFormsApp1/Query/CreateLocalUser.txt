@@ -1,0 +1,8 @@
+﻿CREATE TABLE `tchat`.`localuser` (
+  `User_name` VARCHAR(16) NOT NULL,
+  `nickName` VARCHAR(26) NOT NULL,
+  `User_password` VARCHAR(12) NOT NULL,
+  `User_ID` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`User_ID`),
+  UNIQUE INDEX `User_ID_UNIQUE` (`User_ID` ASC) VISIBLE,
+  UNIQUE INDEX `nickName_UNIQUE` (`nickName` ASC) VISIBLE);
