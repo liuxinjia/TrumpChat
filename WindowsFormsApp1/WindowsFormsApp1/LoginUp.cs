@@ -94,17 +94,13 @@ namespace WindowsFormsApp1
                 Alert.show("Alread has the nickname, choose the other one", AlertType.warning, x_Left, y_Top);
                 return false;
             }
-            //string Updatequery = @"insert into user
-            //values('van Persie', 'Flying DutchMan', 'Robin', '20'); ";
 
-            string Updatequery = @"insert into user values('" + User_name + "',' "
-                + Nick_name + "','" + Password + "','" + user_ID.ToString() + "');";
-            if (User.UpdateQueryAdapter(Updatequery))
-            {
-                return true;
-            }
-            else
+            string addLocalUserQuery = @"SELECT * FROM tchat.user where 1 = 0;";
+            User newLocalUser = new User(User_name, Nick_name, Password, user_ID);
+            if (!User.UpdateQueryAdapter(addLocalUserQuery, newLocalUser))
                 return false;
+
+            return true;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

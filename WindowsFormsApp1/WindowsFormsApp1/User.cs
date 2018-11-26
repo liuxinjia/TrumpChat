@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public enum userErrorType { Notexists, Exists, Name, Nickname, Password, ID }
     public enum QueryEnum { Scalar, NonQuery, Reader }
+    public enum UpdateType { Update, Insert, Delete};
 
     class User
     {
@@ -28,11 +29,24 @@ namespace WindowsFormsApp1
         public int User_id { get => user_id; }
         public userErrorType ErrorType { get => errorType; }
 
-        public static bool UpdateQueryAdapter(string Updatequery)
+        public User()
         {
-            if (Updatequery == "")
+
+        }
+
+        public User(string name, string nName, string pword, int id)
+        {
+            this.user_name = name;
+            this.nickName = nName;
+            this.password = pword;
+            this.user_id = id;
+        }
+
+        public static bool UpdateQueryAdapter( string Selectquery, User newUser)
+        {
+            if (Selectquery == "")
             {
-                Console.WriteLine("No query sentence!");
+                MessageBox.Show("No query sentence!");
                 return false;
             }
             string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
@@ -40,7 +54,6 @@ namespace WindowsFormsApp1
 
             MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
             DataSet dataSet = new DataSet();
 
 
@@ -48,10 +61,18 @@ namespace WindowsFormsApp1
             {
                 dataBaseConnection.Open();
 
-                dataAdapter.SelectCommand = new MySqlCommand(Updatequery, dataBaseConnection);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+                dataAdapter.SelectCommand = new MySqlCommand(Selectquery, dataBaseConnection);
                 MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
 
                 dataAdapter.Fill(dataSet);
+
+                DataRow newRow = dataSet.Tables[0].NewRow();
+                newRow["User_name"] = newUser.user_name;
+                newRow["nickName"] = newUser.nickName;
+                newRow["User_password"] = newUser.password;
+                newRow["User_ID"] = newUser.user_id;
+                dataSet.Tables[0].Rows.Add(newRow); 
 
                 dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
                 dataAdapter.Update(dataSet);
@@ -91,9 +112,7 @@ namespace WindowsFormsApp1
                 try
                 {
                     dataBaseConnection.Open();
-                    int returnNum = 0;
-                    returnNum = Convert.ToInt32(commandDataBase.ExecuteScalar());
-                    returnMessage = Convert.ToString(returnNum);
+                    returnMessage = Convert.ToString(commandDataBase.ExecuteScalar());
                 }
                 catch (Exception e)
                 {
@@ -106,13 +125,31 @@ namespace WindowsFormsApp1
                 try
                 {
                     dataBaseConnection.Open();
-                    returnMessage = commandDataBase.ExecuteScalar().ToString();
+
+                    MySqlDataReader reader = commandDataBase.ExecuteReader();
+                    if (reader.HasRows)
+                        returnMessage = reader[0].ToString();
                 }
                 catch (Exception e)
                 {
-                    //MessageBox.Show("Query error: " + e.Message);
+                    MessageBox.Show("Query error: " + e.Message);
                     return false;
                 }
+            }
+            else if (q == QueryEnum.NonQuery)
+            {
+                try
+                {
+                    dataBaseConnection.Open();
+                    if (commandDataBase.ExecuteNonQuery() == 0)
+                        MessageBox.Show("Are you fucking kidding me?");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Query error: " + e.Message);
+                    return false;
+                }
+
             }
 
             dataBaseConnection.Close();

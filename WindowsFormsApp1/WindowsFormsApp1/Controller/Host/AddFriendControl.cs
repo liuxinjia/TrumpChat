@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Controller.Host
 
         private void AutoCompleteText()
         {
-            string query = @"SELECT * FROM tchat.user;";
+            string query = @"select * from tchat.user where user_id !=" + Program.localUser.LocalUser.User_id + ";";
             ArrayList users = User.SelectQueryReader(query);
             if (users.Count == 0)
                 return;
@@ -64,7 +64,7 @@ namespace WindowsFormsApp1.Controller.Host
             if (friends.Count == 0)
                 return;
             User friend = (User)friends[0];
-
+            Console.WriteLine("The result of searching:" + friends.Count);
             if (friend.ErrorType == userErrorType.Notexists)
             {
                 new Alert("Not found", AlertType.warning);
@@ -85,6 +85,7 @@ namespace WindowsFormsApp1.Controller.Host
 
                     panel_adding.Controls.Add(currentButton);
                     currentButton.Click += new System.EventHandler(currentButton_Click);
+                    //currentButton.Click += new System.EventHandler(timer_closeCreatiedButton_Tick);
                 }
             }
         }
@@ -100,7 +101,7 @@ namespace WindowsFormsApp1.Controller.Host
             Label nameLabel = sender as Label;
             string query = "select *from user where User_name = '" + nameLabel.Text.ToString() + "';";
             ArrayList list = User.SelectQueryReader(query);
-            if (list.Count != 1) { MessageBox.Show("Not found");  return; }
+            if (list.Count != 1) { MessageBox.Show("Not found, this guy is not one of us");  return; }
 
             User friend = (User)list[0];
             for (int i =0; i< Program.localUser.Friends.Count; i++)
@@ -121,6 +122,17 @@ namespace WindowsFormsApp1.Controller.Host
             this.panel1.Controls.Clear();
             this.Enabled = false;
             this.Dispose();
+        }
+
+        private void timer_closeCreatiedButton_Tick(object sender, EventArgs e)
+        {
+            if (sender != null)
+            {
+                BunifuFlatButton currentButton = sender as BunifuFlatButton;
+                currentButton.Enabled = false;
+                currentButton.Visible = false;
+                //panel_adding.Controls.Remove(currentButton);
+            }
         }
     }
 }

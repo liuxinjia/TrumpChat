@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.Controller.Host
         {
             InitializeComponent();
         }
+
+        private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

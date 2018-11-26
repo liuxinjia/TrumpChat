@@ -15,14 +15,14 @@ namespace WindowsFormsApp1
         private User localUser;
 
         internal ArrayList Friends { get => friends; }
-        internal User LocalUser { get => localUser;}
+        internal User LocalUser { get => localUser; }
 
         public Client(User me)
         {
             localUser = me;
             friends = new ArrayList();
 
-            //creatLocalUserTable();
+            creatLocalUserTable();
         }
 
         private void creatLocalUserTable()
@@ -30,9 +30,41 @@ namespace WindowsFormsApp1
             string query = "SELECT count(*) FROM tchat.localuser;";
             QueryEnum q = QueryEnum.Scalar;
             string count = "";
-            if (User.SelectQueryAdapter(query, ref count, q))
+            if (!User.SelectQueryAdapter(query, ref count, q))
             {
+                MessageBox.Show("Something wrong in querying localUser Table");
+                return;
+            }
 
+
+            if (Convert.ToInt32(count) != 0)
+            {
+                //MessageBox.Show("Everything stop, there is been a local User");
+                //return;
+                query = @"SELECT user_id FROM tchat.localuser;";
+                string existsID = "";
+                if (!User.SelectQueryAdapter(query, ref existsID, q))
+                {
+                    MessageBox.Show("SOmething wrong in querying first user in localUser table");
+                    return;
+                }
+                if (Convert.ToInt32(existsID) != localUser.User_id)
+                {
+                    query = @"delete from localuser;";
+                    q = QueryEnum.NonQuery;
+                    if (!User.SelectQueryAdapter(query, ref existsID, q))
+                        return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            string selectQuery = "SELECT * FROM tchat.localuser where 0 =1;";
+            if (!User.UpdateQueryAdapter(selectQuery, this.localUser))
+            {
+                return;
             }
         }
 
@@ -54,6 +86,9 @@ namespace WindowsFormsApp1
         public void makingFriends(User friend)
         {
             this.friends.Add(friend);
+
+            string selectQuery = "SELECT * FROM tchat.localuser where 0 =1;";
+            User.UpdateQueryAdapter(selectQuery, friend);
         }
     }
 }

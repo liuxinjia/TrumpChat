@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFriendControl));
             this.panel_Tool = new System.Windows.Forms.Panel();
+            this.label_name = new System.Windows.Forms.Label();
             this.closePBOx = new System.Windows.Forms.PictureBox();
             this.searchTBox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_adding = new System.Windows.Forms.Panel();
-            this.label_name = new System.Windows.Forms.Label();
+            this.timer_closeCreatiedButton = new System.Windows.Forms.Timer(this.components);
             this.panel_Tool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
             this.panel1.SuspendLayout();
@@ -49,6 +51,17 @@
             this.panel_Tool.Name = "panel_Tool";
             this.panel_Tool.Size = new System.Drawing.Size(300, 50);
             this.panel_Tool.TabIndex = 0;
+            // 
+            // label_name
+            // 
+            this.label_name.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_name.Font = new System.Drawing.Font("Verdana", 32F);
+            this.label_name.Location = new System.Drawing.Point(0, 0);
+            this.label_name.Name = "label_name";
+            this.label_name.Size = new System.Drawing.Size(267, 55);
+            this.label_name.TabIndex = 0;
+            this.label_name.Text = "label1";
+            this.label_name.TextChanged += new System.EventHandler(this.label_name_TextChanged);
             // 
             // closePBOx
             // 
@@ -126,16 +139,10 @@
             this.panel_adding.Size = new System.Drawing.Size(300, 215);
             this.panel_adding.TabIndex = 4;
             // 
-            // label_name
+            // timer_closeCreatiedButton
             // 
-            this.label_name.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_name.Font = new System.Drawing.Font("Verdana", 32F);
-            this.label_name.Location = new System.Drawing.Point(0, 0);
-            this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(267, 55);
-            this.label_name.TabIndex = 0;
-            this.label_name.Text = "label1";
-            this.label_name.TextChanged += new System.EventHandler(this.label_name_TextChanged);
+            this.timer_closeCreatiedButton.Interval = 5000;
+            this.timer_closeCreatiedButton.Tick += new System.EventHandler(this.timer_closeCreatiedButton_Tick);
             // 
             // AddFriendControl
             // 
@@ -164,5 +171,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_adding;
         private System.Windows.Forms.Label label_name;
+        private System.Windows.Forms.Timer timer_closeCreatiedButton;
     }
 }

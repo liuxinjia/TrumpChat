@@ -166,6 +166,7 @@
             this.pwTbox.TextMarginLeft = 5;
             this.pwTbox.TextPlaceholder = "Enter Password";
             this.pwTbox.UseSystemPasswordChar = false;
+            this.pwTbox.MouseEnter += new System.EventHandler(this.pwTbox_MouseEnter);
             // 
             // bunifuThinButton22
             // 
@@ -202,7 +203,7 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(272, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 39);
+            this.label1.Size = new System.Drawing.Size(318, 48);
             this.label1.TabIndex = 28;
             this.label1.Text = "Please Login first";
             // 
@@ -212,10 +213,11 @@
             this.checkBox1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(347, 276);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(134, 22);
+            this.checkBox1.Size = new System.Drawing.Size(169, 29);
             this.checkBox1.TabIndex = 29;
             this.checkBox1.Text = "Remerber Me";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // nameTbox
             // 
@@ -290,7 +292,7 @@
             // loginForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 598);
             this.Controls.Add(this.panelLogin);

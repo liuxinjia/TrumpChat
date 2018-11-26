@@ -65,12 +65,7 @@ namespace WindowsFormsApp1
 
             string selectName = @"select* from user where User_name  = '" + User_Name + "';";
             q = QueryEnum.Reader;
-            //bool restart = RunQuery(selectName, q, password)? false : true;
-            //if (!restart)
-            //{
-            //    //MessageBox.Show("Welcome back");
-            //    Alert.show("Welcome back", AlertType.success, x_Left, y_Top);
-            //}
+
             userErrorType loginErrorType = userErrorType.Notexists;
             loginErrorType = User.RunQuery(selectName, q, password);
             if (loginErrorType == userErrorType.Notexists)
@@ -100,6 +95,36 @@ namespace WindowsFormsApp1
             register.Show();
             this.Visible = false;
             this.Enabled = false;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            string checkMessage = "Amigo, I remember you!";
+            new Alert(checkMessage, AlertType.success);
+
+            rememberPassword();
+        }
+
+        private void rememberPassword()
+        {
+            string name = nameTbox.Text;
+            string password = "";
+            string query = @"select User_password from tchat.localuser where user_name = '" + name + "';";
+
+            if (!User.SelectQueryAdapter(query, ref password, QueryEnum.Scalar))
+            {
+                return;
+            }
+
+            pwTbox.Text = password;
+        }
+
+        private void pwTbox_MouseEnter(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                rememberPassword();
+            }
         }
     }
 }

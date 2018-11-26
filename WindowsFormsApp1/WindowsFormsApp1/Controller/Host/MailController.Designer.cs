@@ -35,10 +35,10 @@
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.label_name = new Bunifu.UI.WinForms.BunifuLabel();
             this.panel_editChat = new System.Windows.Forms.Panel();
-            this.panel_chatlog = new System.Windows.Forms.Panel();
-            this.panel_send = new System.Windows.Forms.Panel();
-            this.panel_accept = new System.Windows.Forms.Panel();
             this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.panel_chatlog = new System.Windows.Forms.Panel();
+            this.panel_accept = new System.Windows.Forms.Panel();
+            this.panel_send = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
@@ -108,7 +108,7 @@
             this.label_name.Location = new System.Drawing.Point(56, 32);
             this.label_name.Name = "label_name";
             this.label_name.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label_name.Size = new System.Drawing.Size(79, 18);
+            this.label_name.Size = new System.Drawing.Size(100, 20);
             this.label_name.TabIndex = 0;
             this.label_name.Text = "FriendName";
             this.label_name.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -121,32 +121,6 @@
             this.panel_editChat.Name = "panel_editChat";
             this.panel_editChat.Size = new System.Drawing.Size(300, 40);
             this.panel_editChat.TabIndex = 1;
-            // 
-            // panel_chatlog
-            // 
-            this.panel_chatlog.Controls.Add(this.panel_accept);
-            this.panel_chatlog.Controls.Add(this.panel_send);
-            this.panel_chatlog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_chatlog.Location = new System.Drawing.Point(0, 50);
-            this.panel_chatlog.Name = "panel_chatlog";
-            this.panel_chatlog.Size = new System.Drawing.Size(300, 210);
-            this.panel_chatlog.TabIndex = 2;
-            // 
-            // panel_send
-            // 
-            this.panel_send.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_send.Location = new System.Drawing.Point(0, 0);
-            this.panel_send.Name = "panel_send";
-            this.panel_send.Size = new System.Drawing.Size(152, 210);
-            this.panel_send.TabIndex = 0;
-            // 
-            // panel_accept
-            // 
-            this.panel_accept.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_accept.Location = new System.Drawing.Point(152, 0);
-            this.panel_accept.Name = "panel_accept";
-            this.panel_accept.Size = new System.Drawing.Size(148, 210);
-            this.panel_accept.TabIndex = 1;
             // 
             // bunifuMetroTextbox1
             // 
@@ -168,10 +142,37 @@
             this.bunifuMetroTextbox1.TabIndex = 0;
             this.bunifuMetroTextbox1.Text = "bunifuMetroTextbox1";
             this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextbox1.OnValueChanged += new System.EventHandler(this.bunifuMetroTextbox1_OnValueChanged);
+            // 
+            // panel_chatlog
+            // 
+            this.panel_chatlog.Controls.Add(this.panel_accept);
+            this.panel_chatlog.Controls.Add(this.panel_send);
+            this.panel_chatlog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_chatlog.Location = new System.Drawing.Point(0, 50);
+            this.panel_chatlog.Name = "panel_chatlog";
+            this.panel_chatlog.Size = new System.Drawing.Size(300, 210);
+            this.panel_chatlog.TabIndex = 2;
+            // 
+            // panel_accept
+            // 
+            this.panel_accept.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_accept.Location = new System.Drawing.Point(152, 0);
+            this.panel_accept.Name = "panel_accept";
+            this.panel_accept.Size = new System.Drawing.Size(148, 210);
+            this.panel_accept.TabIndex = 1;
+            // 
+            // panel_send
+            // 
+            this.panel_send.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_send.Location = new System.Drawing.Point(0, 0);
+            this.panel_send.Name = "panel_send";
+            this.panel_send.Size = new System.Drawing.Size(152, 210);
+            this.panel_send.TabIndex = 0;
             // 
             // MailController
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel_chatlog);
             this.Controls.Add(this.panel_editChat);
