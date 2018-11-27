@@ -21,6 +21,8 @@ namespace WindowsFormsApp1
         private string nickName;
         private string password;
         private int user_id;
+        private string user_address;
+        private int user_port;
         private userErrorType errorType;
 
         public string User_name { get => user_name; }
@@ -28,18 +30,22 @@ namespace WindowsFormsApp1
         public string Password { get => password; set => password = value; }
         public int User_id { get => user_id; }
         public userErrorType ErrorType { get => errorType; }
+        public int User_port { get => user_port; }
+        public string User_address { get => user_address; }
 
         public User()
         {
 
         }
 
-        public User(string name, string nName, string pword, int id)
+        public User(string name, string nName, string pword, int id, string address, int port)
         {
             this.user_name = name;
             this.nickName = nName;
             this.password = pword;
             this.user_id = id;
+            this.user_address = address;
+            this.user_port = port;
         }
 
         public static bool UpdateQueryAdapter( string Selectquery, User newUser)
@@ -72,6 +78,8 @@ namespace WindowsFormsApp1
                 newRow["nickName"] = newUser.nickName;
                 newRow["User_password"] = newUser.password;
                 newRow["User_ID"] = newUser.user_id;
+                newRow["User_Address"] = newUser.user_address;
+                newRow["User_Port"] = newUser.user_port;
                 dataSet.Tables[0].Rows.Add(newRow); 
 
                 dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
@@ -243,7 +251,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception e)
             {
-                MessageBox.Show("Query error: " + e.Message);
+                MessageBox.Show("Query error : " + e.Message);
             }
 
             return user;
@@ -256,6 +264,8 @@ namespace WindowsFormsApp1
             user.nickName = reader[1].ToString();
             user.password = reader[2].ToString();
             user.user_id = Convert.ToInt32(reader[3]);
+            user.user_address = reader[4].ToString();
+            user.user_port = Convert.ToInt32(reader[5]);
             user.errorType = userErrorType.Exists;
             return user;
         }

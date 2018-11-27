@@ -95,8 +95,12 @@ namespace WindowsFormsApp1
                 return false;
             }
 
+            //local User
+            string ip_address = "127.0.0.1";
+            int ip_port = 7;
+
             string addLocalUserQuery = @"SELECT * FROM tchat.user where 1 = 0;";
-            User newLocalUser = new User(User_name, Nick_name, Password, user_ID);
+            User newLocalUser = new User(User_name, Nick_name, Password, user_ID, ip_address, ip_port);
             if (!User.UpdateQueryAdapter(addLocalUserQuery, newLocalUser))
                 return false;
 
