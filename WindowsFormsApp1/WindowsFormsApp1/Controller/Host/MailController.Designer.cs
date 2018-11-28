@@ -35,7 +35,7 @@
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.label_name = new Bunifu.UI.WinForms.BunifuLabel();
             this.panel_editChat = new System.Windows.Forms.Panel();
-            this.chatTBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel_chatlog = new System.Windows.Forms.Panel();
             this.panel_accept = new System.Windows.Forms.Panel();
             this.panel_send = new System.Windows.Forms.Panel();
@@ -71,7 +71,6 @@
             this.bunifuImageButton3.TabIndex = 6;
             this.bunifuImageButton3.TabStop = false;
             this.bunifuImageButton3.Zoom = 10;
-            this.bunifuImageButton3.Click += new System.EventHandler(this.bunifuImageButton3_Click);
             // 
             // bunifuImageButton2
             // 
@@ -85,7 +84,6 @@
             this.bunifuImageButton2.TabIndex = 5;
             this.bunifuImageButton2.TabStop = false;
             this.bunifuImageButton2.Zoom = 10;
-            this.bunifuImageButton2.Click += new System.EventHandler(this.bunifuImageButton2_Click);
             // 
             // bunifuPictureBox1
             // 
@@ -117,34 +115,34 @@
             // 
             // panel_editChat
             // 
-            this.panel_editChat.Controls.Add(this.chatTBox);
+            this.panel_editChat.Controls.Add(this.bunifuMetroTextbox1);
             this.panel_editChat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_editChat.Location = new System.Drawing.Point(0, 260);
             this.panel_editChat.Name = "panel_editChat";
             this.panel_editChat.Size = new System.Drawing.Size(300, 40);
             this.panel_editChat.TabIndex = 1;
             // 
-            // chatTBox
+            // bunifuMetroTextbox1
             // 
-            this.chatTBox.BorderColorFocused = System.Drawing.Color.Brown;
-            this.chatTBox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chatTBox.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.chatTBox.BorderThickness = 3;
-            this.chatTBox.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.chatTBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.chatTBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.chatTBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.chatTBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chatTBox.isPassword = false;
-            this.chatTBox.Location = new System.Drawing.Point(0, 7);
-            this.chatTBox.Margin = new System.Windows.Forms.Padding(4);
-            this.chatTBox.MaxLength = 32767;
-            this.chatTBox.Name = "chatTBox";
-            this.chatTBox.Size = new System.Drawing.Size(300, 33);
-            this.chatTBox.TabIndex = 0;
-            this.chatTBox.Text = "bunifuMetroTextbox1";
-            this.chatTBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.chatTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bunifuMetroTextbox1_KeyPress);
+            this.bunifuMetroTextbox1.BorderColorFocused = System.Drawing.Color.Brown;
+            this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.bunifuMetroTextbox1.BorderThickness = 3;
+            this.bunifuMetroTextbox1.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bunifuMetroTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuMetroTextbox1.isPassword = false;
+            this.bunifuMetroTextbox1.Location = new System.Drawing.Point(0, 7);
+            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextbox1.MaxLength = 32767;
+            this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
+            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(300, 33);
+            this.bunifuMetroTextbox1.TabIndex = 0;
+            this.bunifuMetroTextbox1.Text = "bunifuMetroTextbox1";
+            this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextbox1.OnValueChanged += new System.EventHandler(this.bunifuMetroTextbox1_OnValueChanged);
             // 
             // panel_chatlog
             // 
@@ -183,7 +181,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MailController";
             this.Size = new System.Drawing.Size(300, 300);
-            this.Enter += new System.EventHandler(this.MailController_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
@@ -203,7 +200,7 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton3;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
         private System.Windows.Forms.Panel panel_editChat;
-        private Bunifu.Framework.UI.BunifuMetroTextbox chatTBox;
+        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
         private System.Windows.Forms.Panel panel_chatlog;
         private System.Windows.Forms.Panel panel_accept;
         private System.Windows.Forms.Panel panel_send;

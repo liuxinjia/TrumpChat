@@ -261,7 +261,6 @@
             this.nameTbox.TextMarginLeft = 5;
             this.nameTbox.TextPlaceholder = "Enter Full Name";
             this.nameTbox.UseSystemPasswordChar = false;
-            this.nameTbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTbox_KeyPress);
             // 
             // bunifuThinButton21
             // 

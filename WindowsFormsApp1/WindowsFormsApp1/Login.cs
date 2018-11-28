@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             string checkMessage = "Amigo, I remember you!";
-            new Alert(checkMessage, AlertType.success).Show();
+            new Alert(checkMessage, AlertType.success);
 
             rememberPassword();
         }
@@ -108,7 +108,7 @@ namespace WindowsFormsApp1
         private void rememberPassword()
         {
             string name = nameTbox.Text;
-            string password = name;
+            string password = "";
             string query = @"select User_password from tchat.localuser where user_name = '" + name + "';";
 
             if (!User.SelectQueryAdapter(query, ref password, QueryEnum.Scalar))
@@ -116,8 +116,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (password != "")
-                pwTbox.Text = password;
+            pwTbox.Text = password;
         }
 
         private void pwTbox_MouseEnter(object sender, EventArgs e)
@@ -125,17 +124,6 @@ namespace WindowsFormsApp1
             if (checkBox1.Checked == true)
             {
                 rememberPassword();
-            }
-        }
-
-        private void nameTbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                if (checkBox1.Checked == true)
-                {
-                    rememberPassword();
-                }
             }
         }
     }
