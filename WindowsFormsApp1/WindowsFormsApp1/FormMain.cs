@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bunifu.Framework.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,7 +77,24 @@ namespace WindowsFormsApp1
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Client testClien = Program.localUser;
+
+        }
+
+        private void CreateFlatButton(string nickName)
+        {
+            friendsPanel.Controls.Clear();
+            BunifuFlatButton newButton = new BunifuFlatButton();
+            newButton.AutoSize = true;
+            newButton.Text = nickName;
+            newButton.Name = nickName;
+            newButton.Dock = DockStyle.Top;
+            friendsPanel.Controls.Add(newButton);
+        }
+
+        public void updateFriendList_click(object sender, EventArgs e)
+        {
+            BunifuFlatButton button = sender as BunifuFlatButton;
+            CreateFlatButton(button.Text);
         }
     }
 }

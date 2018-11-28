@@ -85,7 +85,9 @@ namespace WindowsFormsApp1.Controller.Host
 
                     panel_adding.Controls.Add(currentButton);
                     currentButton.Click += new System.EventHandler(currentButton_Click);
-                    //currentButton.Click += new System.EventHandler(timer_closeCreatiedButton_Tick);
+
+                    //FormMain tempForMain = new FormMain();
+                    //currentButton.Click += new EventHandler(Program.mainForm.updateFriendList_click);
                 }
             }
         }
