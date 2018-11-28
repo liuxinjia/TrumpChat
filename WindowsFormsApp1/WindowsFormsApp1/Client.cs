@@ -36,11 +36,8 @@ namespace WindowsFormsApp1
                 return;
             }
 
-
             if (Convert.ToInt32(count) != 0)
             {
-                //MessageBox.Show("Everything stop, there is been a local User");
-                //return;
                 query = @"SELECT user_id FROM tchat.localuser;";
                 string existsID = "";
                 if (!User.SelectQueryAdapter(query, ref existsID, q))
@@ -49,6 +46,21 @@ namespace WindowsFormsApp1
                     return;
                 }
                 if (Convert.ToInt32(existsID) != localUser.User_id)
+                {
+                    query = @"delete from localuser;";
+                    q = QueryEnum.NonQuery;
+                    if (!User.SelectQueryAdapter(query, ref existsID, q))
+                        return;
+                }
+
+                query = @"SELECT user_port FROM tchat.localuser;";
+                string existsPort = "";
+                if (!User.SelectQueryAdapter(query, ref existsPort, q))
+                {
+                    MessageBox.Show("SOmething wrong in querying first user in localUser table");
+                    return;
+                }
+                if (Convert.ToInt32(existsPort) != localUser.User_port)
                 {
                     query = @"delete from localuser;";
                     q = QueryEnum.NonQuery;
