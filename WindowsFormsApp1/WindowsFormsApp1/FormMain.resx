@@ -4360,7 +4360,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="bunifuTileButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bunifuTileButton_host.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABNwAAAQxCAYAAAD1FpBMAAAABGdBTUEAALGPC/xhBQAAsQlJREFUeF7s
         /U+u7Mh1r3//DLzdgnqGPQIB6mgIt3E7wq0BqKOuxlJTUEMNNwrwRGoe7tuQ4RGo3m9I58hZGWvzJDf/

@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
                 string existsPort = "";
                 if (!User.SelectQueryAdapter(query, ref existsPort, q))
                 {
-                    MessageBox.Show("SOmething wrong in querying first user in localUser table");
+                    MessageBox.Show("Something wrong in querying first user in localUser table");
                     return;
                 }
 
@@ -64,10 +64,10 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Can't delete local Users");
                         return;
                     }
-                       
-                }
 
-                return;
+                }
+                else
+                    return;
             }
 
             string selectQuery = "SELECT * FROM tchat.localuser where 0 =1;";
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1
         {
             this.friends.Add(friend);
 
-            string selectQuery = "SELECT * FROM tchat.localuser where 0 =1;";
+            string selectQuery = "SELECT * FROM tchat.friends where 0 =1;";
             User.UpdateQueryAdapter(selectQuery, friend);
         }
     }

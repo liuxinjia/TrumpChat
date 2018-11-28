@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    static class Program
+    static class Login
     {
         //public static int i = 0;
         public static Client localUser;

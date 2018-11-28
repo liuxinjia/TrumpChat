@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Client testClient = Program.localUser;
+            Client testClient = Login.localUser;
             if (friendsPanel.Visible)
             {
                 contentHide.HideSync(friendsPanel);
@@ -82,6 +82,7 @@ namespace WindowsFormsApp1
 
         private void CreateFlatButton(string nickName)
         {
+            bunifuTileButton_host.LabelText = "Changed";
             friendsPanel.Controls.Clear();
             BunifuFlatButton newButton = new BunifuFlatButton();
             newButton.AutoSize = true;
@@ -95,6 +96,18 @@ namespace WindowsFormsApp1
         {
             BunifuFlatButton button = sender as BunifuFlatButton;
             CreateFlatButton(button.Text);
+        }
+
+        private delegate void NameCallBack(string varText);
+
+        public void UpdateTextBox(string input)
+        {
+            if (InvokeRequired)
+                bunifuTileButton_host.BeginInvoke(new NameCallBack(UpdateTextBox), new object[] { input });
+            else
+            {
+                bunifuTileButton_host.LabelText = "Amazing2";
+            }
         }
     }
 }

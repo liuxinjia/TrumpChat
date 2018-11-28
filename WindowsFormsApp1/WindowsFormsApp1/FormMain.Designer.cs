@@ -36,7 +36,7 @@
             this.contentPanel = new System.Windows.Forms.Panel();
             this.bunifuTileButton3 = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.bunifuTileButton_host = new Bunifu.Framework.UI.BunifuTileButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelHead = new System.Windows.Forms.Panel();
             this.addFriend = new System.Windows.Forms.PictureBox();
@@ -47,8 +47,6 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.contentHide = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
-            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
             this.friendsPanel = new System.Windows.Forms.Panel();
             this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -56,6 +54,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contentShow = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
+            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelHead.SuspendLayout();
@@ -80,7 +80,7 @@
             this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.contentPanel.Controls.Add(this.bunifuTileButton3);
             this.contentPanel.Controls.Add(this.bunifuTileButton2);
-            this.contentPanel.Controls.Add(this.bunifuTileButton1);
+            this.contentPanel.Controls.Add(this.bunifuTileButton_host);
             this.contentPanel.Controls.Add(this.pictureBox2);
             this.contentShow.SetDecoration(this.contentPanel, BunifuAnimatorNS.DecorationType.None);
             this.contentHide.SetDecoration(this.contentPanel, BunifuAnimatorNS.DecorationType.None);
@@ -138,28 +138,28 @@
             this.bunifuTileButton2.TabIndex = 4;
             this.bunifuTileButton2.Click += new System.EventHandler(this.bunifuTileButton2_Click);
             // 
-            // bunifuTileButton1
+            // bunifuTileButton_host
             // 
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.bunifuTileButton1.color = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.contentShow.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.contentHide.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTileButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 35;
-            this.bunifuTileButton1.ImageZoom = 50;
-            this.bunifuTileButton1.LabelPosition = 41;
-            this.bunifuTileButton1.LabelText = "Host";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(0, 159);
-            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(213, 190);
-            this.bunifuTileButton1.TabIndex = 3;
-            this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
+            this.bunifuTileButton_host.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.bunifuTileButton_host.color = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
+            this.bunifuTileButton_host.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bunifuTileButton_host.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.contentShow.SetDecoration(this.bunifuTileButton_host, BunifuAnimatorNS.DecorationType.None);
+            this.contentHide.SetDecoration(this.bunifuTileButton_host, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTileButton_host.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuTileButton_host.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.bunifuTileButton_host.ForeColor = System.Drawing.Color.White;
+            this.bunifuTileButton_host.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton_host.Image")));
+            this.bunifuTileButton_host.ImagePosition = 35;
+            this.bunifuTileButton_host.ImageZoom = 50;
+            this.bunifuTileButton_host.LabelPosition = 41;
+            this.bunifuTileButton_host.LabelText = "Host";
+            this.bunifuTileButton_host.Location = new System.Drawing.Point(0, 159);
+            this.bunifuTileButton_host.Margin = new System.Windows.Forms.Padding(6);
+            this.bunifuTileButton_host.Name = "bunifuTileButton_host";
+            this.bunifuTileButton_host.Size = new System.Drawing.Size(213, 190);
+            this.bunifuTileButton_host.TabIndex = 3;
+            this.bunifuTileButton_host.Click += new System.EventHandler(this.bunifuTileButton1_Click);
             // 
             // pictureBox2
             // 
@@ -297,30 +297,6 @@
             this.mainPanel.Size = new System.Drawing.Size(1070, 644);
             this.mainPanel.TabIndex = 3;
             // 
-            // hostControl1
-            // 
-            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.hostControl1.Location = new System.Drawing.Point(200, 0);
-            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.hostControl1.Name = "hostControl1";
-            this.hostControl1.Size = new System.Drawing.Size(870, 644);
-            this.hostControl1.TabIndex = 7;
-            // 
-            // sendMailControl1
-            // 
-            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
-            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.sendMailControl1.Name = "sendMailControl1";
-            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
-            this.sendMailControl1.TabIndex = 6;
-            // 
             // friendsPanel
             // 
             this.friendsPanel.Controls.Add(this.bunifuFlatButton5);
@@ -362,14 +338,14 @@
             this.bunifuFlatButton5.IconVisible = true;
             this.bunifuFlatButton5.IconZoom = 60D;
             this.bunifuFlatButton5.IsTab = true;
-            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 302);
+            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 220);
             this.bunifuFlatButton5.Margin = new System.Windows.Forms.Padding(28);
             this.bunifuFlatButton5.Name = "bunifuFlatButton5";
             this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton5.selected = true;
-            this.bunifuFlatButton5.Size = new System.Drawing.Size(200, 66);
+            this.bunifuFlatButton5.Size = new System.Drawing.Size(200, 25);
             this.bunifuFlatButton5.TabIndex = 9;
             this.bunifuFlatButton5.Text = "NickName";
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -402,14 +378,14 @@
             this.bunifuFlatButton4.IconVisible = true;
             this.bunifuFlatButton4.IconZoom = 60D;
             this.bunifuFlatButton4.IsTab = true;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 236);
+            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 195);
             this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(21);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton4.selected = true;
-            this.bunifuFlatButton4.Size = new System.Drawing.Size(200, 66);
+            this.bunifuFlatButton4.Size = new System.Drawing.Size(200, 25);
             this.bunifuFlatButton4.TabIndex = 8;
             this.bunifuFlatButton4.Text = "NickName";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -449,7 +425,7 @@
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(92)))), ((int)(((byte)(158)))));
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton3.selected = true;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(200, 66);
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(200, 25);
             this.bunifuFlatButton3.TabIndex = 7;
             this.bunifuFlatButton3.Text = "NickName";
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -498,6 +474,30 @@
             this.bunifuDragControl2.TargetControl = this.panel2;
             this.bunifuDragControl2.Vertical = true;
             // 
+            // hostControl1
+            // 
+            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.hostControl1.Location = new System.Drawing.Point(200, 0);
+            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.hostControl1.Name = "hostControl1";
+            this.hostControl1.Size = new System.Drawing.Size(870, 644);
+            this.hostControl1.TabIndex = 7;
+            // 
+            // sendMailControl1
+            // 
+            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
+            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.sendMailControl1.Name = "sendMailControl1";
+            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
+            this.sendMailControl1.TabIndex = 6;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -540,7 +540,7 @@
         private BunifuAnimatorNS.BunifuTransition contentShow;
         private System.Windows.Forms.PictureBox closePBOx;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
+        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton_host;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton3;
         private System.Windows.Forms.Panel mainPanel;

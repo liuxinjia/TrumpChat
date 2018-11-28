@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             if (list.Count != 1) { return; }
 
             User me = (User)list[0];
-            Program.localUser = new Client(me);
+            Login.localUser = new Client(me);
 
             FormMain mainForm = new FormMain();
             mainForm.Show();

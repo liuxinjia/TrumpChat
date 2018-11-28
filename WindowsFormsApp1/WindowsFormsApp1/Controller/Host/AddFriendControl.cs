@@ -18,12 +18,13 @@ namespace WindowsFormsApp1.Controller.Host
         {
             InitializeComponent();
             AutoCompleteText();
-            //Program.i++;
         }
 
         private void AutoCompleteText()
         {
-            string query = @"select * from tchat.user where user_id !=" + Program.localUser.LocalUser.User_id + ";";
+            //string query = @"select * from tchat.user where user_id !=" + Login.localUser.LocalUser.User_id + ";";
+            string query = @"select t1.* from tchat.user t1 left JOIN tchat.friends t2 ON t1.user_id = t2.user_id 
+            where t2.user_name is null AND t1.user_id !=" + Login.localUser.LocalUser.User_id + ";";
             ArrayList users = User.SelectQueryReader(query);
             if (users.Count == 0)
                 return;
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1.Controller.Host
             searchTBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             searchTBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection collumn = new AutoCompleteStringCollection();
+
             if (user.ErrorType == userErrorType.Notexists)
             {
                 new Alert("Not user exists", AlertType.warning);
@@ -87,7 +89,8 @@ namespace WindowsFormsApp1.Controller.Host
                     currentButton.Click += new System.EventHandler(currentButton_Click);
 
                     //FormMain tempForMain = new FormMain();
-                    //currentButton.Click += new EventHandler(Program.mainForm.updateFriendList_click);
+                    currentButton.Click += new EventHandler(loginForm.mainForm.updateFriendList_click);
+                    loginForm.mainForm.UpdateTextBox("Amazing1");
                 }
             }
         }
@@ -95,26 +98,38 @@ namespace WindowsFormsApp1.Controller.Host
         private void currentButton_Click(object sender, EventArgs e)
         {
             BunifuFlatButton button = sender as BunifuFlatButton;
-            label_name.Text = button.Name.ToString();
+            label_name.Name = button.Name.ToString();
+            label_name.Text = button.Text.ToString();
+
+            //Update the autoCompleteSource
+            UpdateAutoCompleteSource(label_name.Text, label_name.Name);
+        }
+
+        private void UpdateAutoCompleteSource(string nickname, string userName)
+        {
+            AutoCompleteStringCollection collumn = searchTBox.AutoCompleteCustomSource;
+            collumn.Remove(userName);
+            collumn.Remove(nickname);
+            searchTBox.AutoCompleteCustomSource = collumn;
         }
 
         private void label_name_TextChanged(object sender, EventArgs e)
         {
             Label nameLabel = sender as Label;
-            string query = "select *from user where User_name = '" + nameLabel.Text.ToString() + "';";
+            string query = "select *from user where User_name = '" + nameLabel.Name.ToString() + "';";
             ArrayList list = User.SelectQueryReader(query);
-            if (list.Count != 1) { MessageBox.Show("Not found, this guy is not one of us");  return; }
+            if (list.Count != 1) { MessageBox.Show("Not found, this guy is not one of us"); return; }
 
             User friend = (User)list[0];
-            for (int i =0; i< Program.localUser.Friends.Count; i++)
+            for (int i = 0; i < Login.localUser.Friends.Count; i++)
             {
-                User cmp = (User)Program.localUser.Friends[i];
-                if (String.Compare(nameLabel.Text.ToString(), cmp.User_name.ToString()) == 0)
+                User cmp = (User)Login.localUser.Friends[i];
+                if (String.Compare(nameLabel.Name.ToString(), cmp.User_name.ToString()) == 0)
                 {
                     return;
                 }
             }
-            Program.localUser.makingFriends(friend);
+            Login.localUser.makingFriends(friend);
         }
 
         private void closePBOx_Click(object sender, EventArgs e)

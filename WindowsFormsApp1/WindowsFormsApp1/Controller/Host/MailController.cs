@@ -146,8 +146,8 @@ namespace WindowsFormsApp1.Controller.Host
         {
             try
             {
-                ipEndPoint = new IPEndPoint(IPAddress.Parse(Program.localUser.LocalUser.User_address),
-                    Program.localUser.LocalUser.User_port);
+                ipEndPoint = new IPEndPoint(IPAddress.Parse(Login.localUser.LocalUser.User_address),
+                    Login.localUser.LocalUser.User_port);
                 sockets = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 sockets.Connect(ipEndPoint);
                 if (sockets.Connected)
