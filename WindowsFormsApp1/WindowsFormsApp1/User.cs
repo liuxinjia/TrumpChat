@@ -14,9 +14,11 @@ namespace WindowsFormsApp1
     public enum QueryEnum { Scalar, NonQuery, Reader }
     public enum UpdateType { Update, Insert, Delete};
 
-    class User
+    public class User
     {
+        public delegate void UpdateDataHandler(object runner, string message);
 
+        //User properties
         private string user_name;
         private string nickName;
         private string password;
@@ -24,6 +26,9 @@ namespace WindowsFormsApp1
         private string user_address;
         private int user_port;
         private userErrorType errorType;
+
+        //Event Handler
+        public event UpdateDataHandler UpdateFriends;
 
         public string User_name { get => user_name; }
         public string NickName { get => nickName; set => nickName = value; }
@@ -48,6 +53,7 @@ namespace WindowsFormsApp1
             this.user_port = port;
         }
 
+        //Query function        //---------------
         public static bool UpdateQueryAdapter( string Selectquery, User newUser)
         {
             if (Selectquery == "")
@@ -268,6 +274,17 @@ namespace WindowsFormsApp1
             user.user_port = Convert.ToInt32(reader[5]);
             user.errorType = userErrorType.Exists;
             return user;
+        }
+
+        //Event function
+        public string nameNothing = "";
+
+        public void Run()
+        {
+            if (UpdateFriends != null)
+            {
+                UpdateFriends(this, nameNothing);
+            }
         }
     }
 }

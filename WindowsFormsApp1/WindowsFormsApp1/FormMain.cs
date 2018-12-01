@@ -19,6 +19,22 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        //personal function
+        //-----------------
+        public void Subscribe(User theUser)
+        {
+            theUser.UpdateFriends += new User.UpdateDataHandler(UpdateLabelName);
+        }
+        public void Unscribe(User theUser)
+        {
+            theUser.UpdateFriends -= new User.UpdateDataHandler(UpdateLabelName);
+        }
+        public void UpdateLabelName(object theUser, string name)
+        {
+            bunifuTileButton_host.LabelText = name;
+        }
+
+
         private void contentPBox_Click(object sender, EventArgs e)
         {
             if (contentPanel.Visible)
@@ -34,7 +50,6 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Client testClient = Login.localUser;
             if (friendsPanel.Visible)
             {
                 contentHide.HideSync(friendsPanel);
@@ -43,6 +58,11 @@ namespace WindowsFormsApp1
             {
                 contentShow.ShowSync(friendsPanel);
             }
+
+            this.Subscribe(Login.localUser.LocalUser);
+            
+            Login.localUser.LocalUser.Run();
+            this.Unscribe(Login.localUser.LocalUser);
         }
 
         private void bunifuTileButton1_Click(object sender, EventArgs e)
@@ -71,13 +91,7 @@ namespace WindowsFormsApp1
             AddFriendControl newFriend = new AddFriendControl();
             newFriend.Parent = this;
             newFriend.Dock = DockStyle.Left;
-            newFriend.Name = "add";
-            
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
+            newFriend.Name = "add";            
         }
 
         private void CreateFlatButton(string nickName)
@@ -92,22 +106,22 @@ namespace WindowsFormsApp1
             friendsPanel.Controls.Add(newButton);
         }
 
-        public void updateFriendList_click(object sender, EventArgs e)
-        {
-            BunifuFlatButton button = sender as BunifuFlatButton;
-            CreateFlatButton(button.Text);
-        }
+        //public void updateFriendList_click(object sender, EventArgs e)
+        //{
+        //    BunifuFlatButton button = sender as BunifuFlatButton;
+        //    CreateFlatButton(button.Text);
+        //}
 
-        private delegate void NameCallBack(string varText);
+        //private delegate void NameCallBack(string varText);
 
-        public void UpdateTextBox(string input)
-        {
-            if (InvokeRequired)
-                bunifuTileButton_host.BeginInvoke(new NameCallBack(UpdateTextBox), new object[] { input });
-            else
-            {
-                bunifuTileButton_host.LabelText = "Amazing2";
-            }
-        }
+        //public void UpdateTextBox(string input)
+        //{
+        //    if (InvokeRequired)
+        //        bunifuTileButton_host.BeginInvoke(new NameCallBack(UpdateTextBox), new object[] { input });
+        //    else
+        //    {
+        //        bunifuTileButton_host.LabelText = "Amazing2";
+        //    }
+        //}
     }
 }

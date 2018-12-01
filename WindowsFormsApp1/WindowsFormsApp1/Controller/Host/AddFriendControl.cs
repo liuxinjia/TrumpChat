@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Controller.Host
             }
             else
             {
-                panel_adding.Controls.Clear();
+                flowpanel_adding.Controls.Clear();
                 for (int j = 0; j < friends.Count; j++)
                 {
                     int i = j % 3;
@@ -85,12 +85,9 @@ namespace WindowsFormsApp1.Controller.Host
                     currentButton.Text = friend.NickName;
                     currentButton.BackColor = Color.FromArgb(i * 10, i * 30, i * 50);
 
-                    panel_adding.Controls.Add(currentButton);
+                    flowpanel_adding.Controls.Add(currentButton);
                     currentButton.Click += new System.EventHandler(currentButton_Click);
 
-                    //FormMain tempForMain = new FormMain();
-                    currentButton.Click += new EventHandler(loginForm.mainForm.updateFriendList_click);
-                    loginForm.mainForm.UpdateTextBox("Amazing1");
                 }
             }
         }
@@ -103,8 +100,27 @@ namespace WindowsFormsApp1.Controller.Host
 
             //Update the autoCompleteSource
             UpdateAutoCompleteSource(label_name.Text, label_name.Name);
+
+            this.Subscribe(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run();
+            this.UnSubscribe(Login.localUser.LocalUser);
         }
 
+        public void Subscribe(User theUser)
+        {
+            theUser.UpdateFriends += new User.UpdateDataHandler(TriggerChange);
+        }
+        public void UnSubscribe(User theUser)
+        {
+            theUser.UpdateFriends -= new User.UpdateDataHandler(TriggerChange);
+        }
+        public void TriggerChange(object theUser, string name)
+        {
+            User userAdapter = theUser as User;
+            userAdapter.nameNothing = label_name.Name;
+            name = label_name.Name;
+            //Login.localUser.LocalUser.nameNothing = label_name.Name;
+        }
         private void UpdateAutoCompleteSource(string nickname, string userName)
         {
             AutoCompleteStringCollection collumn = searchTBox.AutoCompleteCustomSource;
@@ -134,7 +150,7 @@ namespace WindowsFormsApp1.Controller.Host
 
         private void closePBOx_Click(object sender, EventArgs e)
         {
-            this.panel_adding.Controls.Clear();
+            this.flowpanel_adding.Controls.Clear();
             this.panel_Tool.Controls.Clear();
             this.panel1.Controls.Clear();
             this.Enabled = false;

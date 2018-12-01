@@ -38,13 +38,17 @@
             this.chatTBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel_chatlog = new System.Windows.Forms.Panel();
             this.panel_accept = new System.Windows.Forms.Panel();
+            this.flowPanel_Receive = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_send = new System.Windows.Forms.Panel();
+            this.flowPanel_Send = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.panel_editChat.SuspendLayout();
             this.panel_chatlog.SuspendLayout();
+            this.panel_accept.SuspendLayout();
+            this.panel_send.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -158,19 +162,41 @@
             // 
             // panel_accept
             // 
+            this.panel_accept.Controls.Add(this.flowPanel_Receive);
             this.panel_accept.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_accept.Location = new System.Drawing.Point(152, 0);
             this.panel_accept.Name = "panel_accept";
             this.panel_accept.Size = new System.Drawing.Size(148, 210);
             this.panel_accept.TabIndex = 1;
             // 
+            // flowPanel_Receive
+            // 
+            this.flowPanel_Receive.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowPanel_Receive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanel_Receive.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowPanel_Receive.Location = new System.Drawing.Point(0, 0);
+            this.flowPanel_Receive.Name = "flowPanel_Receive";
+            this.flowPanel_Receive.Size = new System.Drawing.Size(148, 210);
+            this.flowPanel_Receive.TabIndex = 0;
+            // 
             // panel_send
             // 
+            this.panel_send.Controls.Add(this.flowPanel_Send);
             this.panel_send.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_send.Location = new System.Drawing.Point(0, 0);
             this.panel_send.Name = "panel_send";
             this.panel_send.Size = new System.Drawing.Size(152, 210);
             this.panel_send.TabIndex = 0;
+            // 
+            // flowPanel_Send
+            // 
+            this.flowPanel_Send.BackColor = System.Drawing.Color.Transparent;
+            this.flowPanel_Send.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanel_Send.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowPanel_Send.Location = new System.Drawing.Point(0, 0);
+            this.flowPanel_Send.Name = "flowPanel_Send";
+            this.flowPanel_Send.Size = new System.Drawing.Size(152, 210);
+            this.flowPanel_Send.TabIndex = 0;
             // 
             // MailController
             // 
@@ -191,6 +217,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.panel_editChat.ResumeLayout(false);
             this.panel_chatlog.ResumeLayout(false);
+            this.panel_accept.ResumeLayout(false);
+            this.panel_send.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -207,5 +235,7 @@
         private System.Windows.Forms.Panel panel_chatlog;
         private System.Windows.Forms.Panel panel_accept;
         private System.Windows.Forms.Panel panel_send;
+        private System.Windows.Forms.FlowLayoutPanel flowPanel_Receive;
+        private System.Windows.Forms.FlowLayoutPanel flowPanel_Send;
     }
 }

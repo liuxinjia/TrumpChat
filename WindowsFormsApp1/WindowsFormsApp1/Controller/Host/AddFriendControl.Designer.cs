@@ -35,8 +35,8 @@
             this.closePBOx = new System.Windows.Forms.PictureBox();
             this.searchTBox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_adding = new System.Windows.Forms.Panel();
             this.timer_closeCreatiedButton = new System.Windows.Forms.Timer(this.components);
+            this.flowpanel_adding = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_Tool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
             this.panel1.SuspendLayout();
@@ -130,25 +130,26 @@
             this.panel1.Size = new System.Drawing.Size(300, 35);
             this.panel1.TabIndex = 3;
             // 
-            // panel_adding
-            // 
-            this.panel_adding.AllowDrop = true;
-            this.panel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_adding.Location = new System.Drawing.Point(0, 85);
-            this.panel_adding.Name = "panel_adding";
-            this.panel_adding.Size = new System.Drawing.Size(300, 215);
-            this.panel_adding.TabIndex = 4;
-            // 
             // timer_closeCreatiedButton
             // 
             this.timer_closeCreatiedButton.Interval = 5000;
             this.timer_closeCreatiedButton.Tick += new System.EventHandler(this.timer_closeCreatiedButton_Tick);
             // 
+            // flowpanel_adding
+            // 
+            this.flowpanel_adding.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowpanel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanel_adding.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowpanel_adding.Location = new System.Drawing.Point(0, 85);
+            this.flowpanel_adding.Name = "flowpanel_adding";
+            this.flowpanel_adding.Size = new System.Drawing.Size(300, 215);
+            this.flowpanel_adding.TabIndex = 4;
+            // 
             // AddFriendControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel_adding);
+            this.Controls.Add(this.flowpanel_adding);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_Tool);
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -169,8 +170,8 @@
         private System.Windows.Forms.PictureBox closePBOx;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchTBox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel_adding;
         private System.Windows.Forms.Label label_name;
         private System.Windows.Forms.Timer timer_closeCreatiedButton;
+        private System.Windows.Forms.FlowLayoutPanel flowpanel_adding;
     }
 }

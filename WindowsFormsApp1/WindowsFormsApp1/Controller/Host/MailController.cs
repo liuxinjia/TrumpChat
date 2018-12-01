@@ -47,7 +47,7 @@ namespace WindowsFormsApp1.Controller.Host
                     sTemp = tReader.ReadLine();
                     if (sTemp.Length != 0)
                     {
-                        panel_accept.Controls.Add(CreateChatLabel(sTemp));
+                        flowPanel_Receive.Controls.Add(CreateChatLabel(sTemp));
                     }
                 }
                 catch
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1.Controller.Host
 
             if (e.KeyChar == (char)13)
             {
-                panel_send.Controls.Add(CreateChatLabel(chatMetroTBox.Text));
+                flowPanel_Send.Controls.Add(CreateChatButton(chatMetroTBox.Text));
 
                 if (connected)
                 {
@@ -95,11 +95,29 @@ namespace WindowsFormsApp1.Controller.Host
         private Label CreateChatLabel(string message)
         {
             Label newLabel = new Label();
-            newLabel.Parent = panel_send;
             newLabel.AutoEllipsis = true;
             newLabel.AutoSize = true;
+            newLabel.Top = 40;
+            newLabel.Left = 15;
             newLabel.Text = message;
             return newLabel;
+        }
+
+        private Button CreateChatButton(string message)
+        {
+            Button newButton = new Button();
+            newButton.AutoSize = true;
+            newButton.Top = 20;
+            newButton.Left = 8;
+            newButton.Text = message;
+            newButton.Name = "NewButton_" + message;
+
+            System.DateTime dt = System.DateTime.Now;
+            int r = Math.Min(255, dt.Second * 10);
+            int g = Math.Min(255, dt.Second * 15);
+            int b = Math.Min(255, dt.Second * 25);
+            newButton.BackColor =  Color.FromArgb(r,g,b);
+            return newButton;
         }
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
