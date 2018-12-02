@@ -1,5 +1,6 @@
 ﻿using Bunifu.Framework.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,23 +20,58 @@ namespace WindowsFormsApp1
         public FormMain()
         {
             InitializeComponent();
+
+            load_friends();
         }
 
-        //personal function
+        //Event Handler
         //-----------------
-        public void Subscribe(User theUser)
+
+        //reponse to create updatefriends_button
+        public void Subscribe_UpdateFriends(User theUser) => theUser.UpdateFriends += new User.UpdateDataHandler(CreateFlatButton);
+        public void Unscribe_UpdateFriends(User theUser) => theUser.UpdateFriends -= new User.UpdateDataHandler(CreateFlatButton);
+
+        private void CreateFlatButton(object theUser, string nickName)
         {
-            theUser.UpdateFriends += new User.UpdateDataHandler(CreateFlatButton);
-        }
-        public void Unscribe(User theUser)
-        {
-            theUser.UpdateFriends -= new User.UpdateDataHandler(CreateFlatButton);
-        }
-        public void UpdateLabelName(object theUser, string name)
-        {
-            bunifuTileButton_host.LabelText = name;
+
+            if (lastFriend == nickName || nickName == "")
+                return;
+            lastFriend = nickName;
+
+            BunifuFlatButton newButton = new BunifuFlatButton();
+            newButton.AutoSize = true;
+            newButton.Text = nickName;
+            newButton.Name = nickName;
+            newButton.Dock = DockStyle.Top;
+            flowLayoutPanel1.Controls.Add(newButton);
         }
 
+        //Preload function
+        //-----------------
+
+        private void load_friends()
+        {
+            string query = @"SELECT 
+                                   *
+                              FROM
+                                    tchat.friends
+                            WHERE
+                                 user_id IS NOT NULL;";
+            ArrayList friends = User.SelectQueryReader(query);
+            if (friends.Count == 0)
+                return;
+
+            foreach(User friend in friends)
+            {
+                CreateFlatButton(friend, friend.NickName);
+            }
+
+        }
+
+
+
+        //autocreation function
+        //-----------------
 
         private void contentPBox_Click(object sender, EventArgs e)
         {
@@ -52,6 +88,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+
             if (friendsPanel.Visible)
             {
                 contentHide.HideSync(friendsPanel);
@@ -61,9 +98,8 @@ namespace WindowsFormsApp1
                 contentShow.ShowSync(friendsPanel);
             }
 
-            this.Subscribe(Login.localUser.LocalUser);
-            
-            Login.localUser.LocalUser.Run();
+            this.Subscribe_UpdateFriends(Login.localUser.LocalUser);           
+            Login.localUser.LocalUser.Run_UpdateFriends();
            // this.Unscribe(Login.localUser.LocalUser);
         }
 
@@ -94,22 +130,6 @@ namespace WindowsFormsApp1
             newFriend.Parent = this;
             newFriend.Dock = DockStyle.Left;
             newFriend.Name = "add";            
-        }
-
-        private void CreateFlatButton(object theUser, string nickName)
-        {
-            if (lastFriend == nickName)
-                return;
-            lastFriend = nickName;
-
-            bunifuTileButton_host.LabelText = nickName;
-         //   friendsPanel.Controls.Clear();
-            BunifuFlatButton newButton = new BunifuFlatButton();
-            newButton.AutoSize = true;
-            newButton.Text = nickName;
-            newButton.Name = nickName;
-            newButton.Dock = DockStyle.Top;
-            flowLayoutPanel1.Controls.Add(newButton);           
         }
 
         //public void updateFriendList_click(object sender, EventArgs e)
