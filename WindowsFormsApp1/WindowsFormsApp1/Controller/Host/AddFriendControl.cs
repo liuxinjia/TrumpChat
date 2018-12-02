@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.Controller.Host
                 return;
             User user = (User)users[0];
 
-            searchTBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            searchTBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchTBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection collumn = new AutoCompleteStringCollection();
 
@@ -59,8 +59,13 @@ namespace WindowsFormsApp1.Controller.Host
         private void addnewControl()
         {
             string queryName = searchTBox.Text;
-            string query = @"select *from user where User_name like '" + queryName
-                + @"' or nickName like '" + queryName + "';";
+            string query = "";
+
+            if (queryName != "")
+                query = @"select *from user where User_name like '" + queryName
+                        + @"%' or nickName like '" + queryName + "%';";
+            else
+                query = @"select * from tchat.user where User_id< 8;";
 
             ArrayList friends = User.SelectQueryReader(query);
             if (friends.Count == 0)
@@ -74,20 +79,18 @@ namespace WindowsFormsApp1.Controller.Host
             else
             {
                 flowpanel_adding.Controls.Clear();
-                for (int j = 0; j < friends.Count; j++)
+                //for (int j = 0; j < friends.Count; j++)
+                foreach (User fri in friends)
                 {
-                    int i = j % 3;
                     //currentButton.Parent = FormMain.newFriend;
                     BunifuFlatButton currentButton = new BunifuFlatButton();
                     currentButton.Dock = DockStyle.Top;
                     currentButton.AutoSize = true;
-                    currentButton.Name = friend.User_name;
-                    currentButton.Text = friend.NickName;
-                    currentButton.BackColor = Color.FromArgb(i * 10, i * 30, i * 50);
+                    currentButton.Name = fri.User_name;
+                    currentButton.Text = fri.NickName;
 
                     flowpanel_adding.Controls.Add(currentButton);
                     currentButton.Click += new System.EventHandler(currentButton_Click);
-
                 }
             }
         }
@@ -103,8 +106,10 @@ namespace WindowsFormsApp1.Controller.Host
 
             this.Subscribe(Login.localUser.LocalUser);
             Login.localUser.LocalUser.Run();
-            this.UnSubscribe(Login.localUser.LocalUser);
-        }
+            Login.localUser.LocalUser.Run();
+            //this.UnSubscribe(Login.localUser.LocalUser);
+            button.Enabled = false;
+           }
 
         public void Subscribe(User theUser)
         {
@@ -117,8 +122,7 @@ namespace WindowsFormsApp1.Controller.Host
         public void TriggerChange(object theUser, string name)
         {
             User userAdapter = theUser as User;
-            userAdapter.nameNothing = label_name.Name;
-            name = label_name.Name;
+            userAdapter.nameNothing = label_name.Name;     
             //Login.localUser.LocalUser.nameNothing = label_name.Name;
         }
         private void UpdateAutoCompleteSource(string nickname, string userName)

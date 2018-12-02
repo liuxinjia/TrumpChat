@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             rememberPassword();
         }
 
-        private void rememberPassword()
+        private bool rememberPassword()
         {
             string name = nameTbox.Text;
             string password = name;
@@ -115,11 +115,19 @@ namespace WindowsFormsApp1
 
             if (!User.SelectQueryAdapter(query, ref password, QueryEnum.Scalar))
             {
-                return;
+                return false;
             }
 
             if (password != "")
                 pwTbox.Text = password;
+            else
+            {
+                //new Alert("Sorry, what the fuck are you", AlertType.warning);
+                //MessageBox.Show("Sorry, what the fuck are you");
+                return false;
+            }
+
+            return true;
         }
 
         private void pwTbox_MouseEnter(object sender, EventArgs e)
@@ -136,7 +144,10 @@ namespace WindowsFormsApp1
             {
                 if (checkBox1.Checked == true)
                 {
-                    rememberPassword();
+                    if (!rememberPassword())
+                    {
+                        new Alert("Sorry, what the fuck are you", AlertType.warning).Show();
+                    }
                 }
             }
         }

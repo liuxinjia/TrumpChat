@@ -36,10 +36,18 @@
             this.searchTBox = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer_closeCreatiedButton = new System.Windows.Forms.Timer(this.components);
+            this.panel_adding = new System.Windows.Forms.Panel();
+            this.panel_blank = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanel_adding = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_Tool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel_adding.SuspendLayout();
+            this.panel_blank.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Tool
@@ -135,21 +143,60 @@
             this.timer_closeCreatiedButton.Interval = 5000;
             this.timer_closeCreatiedButton.Tick += new System.EventHandler(this.timer_closeCreatiedButton_Tick);
             // 
+            // panel_adding
+            // 
+            this.panel_adding.Controls.Add(this.panel2);
+            this.panel_adding.Controls.Add(this.panel_blank);
+            this.panel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_adding.Location = new System.Drawing.Point(0, 85);
+            this.panel_adding.Name = "panel_adding";
+            this.panel_adding.Size = new System.Drawing.Size(300, 215);
+            this.panel_adding.TabIndex = 4;
+            // 
+            // panel_blank
+            // 
+            this.panel_blank.Controls.Add(this.pictureBox1);
+            this.panel_blank.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_blank.Location = new System.Drawing.Point(0, 0);
+            this.panel_blank.Name = "panel_blank";
+            this.panel_blank.Size = new System.Drawing.Size(300, 51);
+            this.panel_blank.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.Controls.Add(this.flowpanel_adding);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 51);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(300, 164);
+            this.panel2.TabIndex = 1;
+            // 
             // flowpanel_adding
             // 
             this.flowpanel_adding.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowpanel_adding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanel_adding.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowpanel_adding.Location = new System.Drawing.Point(0, 85);
+            this.flowpanel_adding.Location = new System.Drawing.Point(0, 0);
             this.flowpanel_adding.Name = "flowpanel_adding";
-            this.flowpanel_adding.Size = new System.Drawing.Size(300, 215);
-            this.flowpanel_adding.TabIndex = 4;
+            this.flowpanel_adding.Size = new System.Drawing.Size(300, 164);
+            this.flowpanel_adding.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // AddFriendControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.flowpanel_adding);
+            this.Controls.Add(this.panel_adding);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_Tool);
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,6 +207,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.closePBOx)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_adding.ResumeLayout(false);
+            this.panel_blank.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,6 +223,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label_name;
         private System.Windows.Forms.Timer timer_closeCreatiedButton;
+        private System.Windows.Forms.Panel panel_adding;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpanel_adding;
+        private System.Windows.Forms.Panel panel_blank;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

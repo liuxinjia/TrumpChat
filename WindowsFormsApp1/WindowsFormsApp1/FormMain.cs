@@ -14,6 +14,8 @@ namespace WindowsFormsApp1
 {
     public partial class FormMain : Form
     {
+        private string lastFriend = "";
+
         public FormMain()
         {
             InitializeComponent();
@@ -23,11 +25,11 @@ namespace WindowsFormsApp1
         //-----------------
         public void Subscribe(User theUser)
         {
-            theUser.UpdateFriends += new User.UpdateDataHandler(UpdateLabelName);
+            theUser.UpdateFriends += new User.UpdateDataHandler(CreateFlatButton);
         }
         public void Unscribe(User theUser)
         {
-            theUser.UpdateFriends -= new User.UpdateDataHandler(UpdateLabelName);
+            theUser.UpdateFriends -= new User.UpdateDataHandler(CreateFlatButton);
         }
         public void UpdateLabelName(object theUser, string name)
         {
@@ -62,7 +64,7 @@ namespace WindowsFormsApp1
             this.Subscribe(Login.localUser.LocalUser);
             
             Login.localUser.LocalUser.Run();
-            this.Unscribe(Login.localUser.LocalUser);
+           // this.Unscribe(Login.localUser.LocalUser);
         }
 
         private void bunifuTileButton1_Click(object sender, EventArgs e)
@@ -94,16 +96,20 @@ namespace WindowsFormsApp1
             newFriend.Name = "add";            
         }
 
-        private void CreateFlatButton(string nickName)
+        private void CreateFlatButton(object theUser, string nickName)
         {
-            bunifuTileButton_host.LabelText = "Changed";
-            friendsPanel.Controls.Clear();
+            if (lastFriend == nickName)
+                return;
+            lastFriend = nickName;
+
+            bunifuTileButton_host.LabelText = nickName;
+         //   friendsPanel.Controls.Clear();
             BunifuFlatButton newButton = new BunifuFlatButton();
             newButton.AutoSize = true;
             newButton.Text = nickName;
             newButton.Name = nickName;
             newButton.Dock = DockStyle.Top;
-            friendsPanel.Controls.Add(newButton);
+            flowLayoutPanel1.Controls.Add(newButton);           
         }
 
         //public void updateFriendList_click(object sender, EventArgs e)
