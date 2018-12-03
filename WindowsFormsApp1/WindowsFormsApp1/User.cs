@@ -53,7 +53,8 @@ namespace WindowsFormsApp1
             this.user_port = port;
         }
 
-        //Query function        //---------------
+        //Query function      
+        //---------------
         public static bool UpdateQueryAdapter( string Selectquery, User newUser)
         {
             if (Selectquery == "")
@@ -277,14 +278,23 @@ namespace WindowsFormsApp1
         }
 
         //Event function
-        public string nameNothing = "";
+        //---------------
 
-        public void Run()
+        //eventHandler to create new friends button
+        public string friend_Before = "";
+
+        public void Run_UpdateFriends()
         {
             if (UpdateFriends != null)
             {
-                UpdateFriends(this, nameNothing);
+                UpdateFriends(this, friend_Before);
             }
+        }
+
+        //eventHandler to create new dialogue window
+        public void Run_OpenDialogue()
+        {
+
         }
     }
 }
