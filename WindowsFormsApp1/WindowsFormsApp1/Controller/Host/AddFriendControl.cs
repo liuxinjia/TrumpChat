@@ -20,20 +20,6 @@ namespace WindowsFormsApp1.Controller.Host
             AutoCompleteText();
         }
 
-        //Event Handler
-        //--------------
-
-        //tigger to create new friends button
-        public void Subscribe_UpdateFriends(User theUser) => theUser.UpdateFriends += new User.UpdateDataHandler(TriggerUpdateFriends);
-        public void UnSubscribe_UpdateFriends(User theUser) => theUser.UpdateFriends -= new User.UpdateDataHandler(TriggerUpdateFriends);
-        public void TriggerUpdateFriends(object theUser, string name)
-        {
-            User userAdapter = theUser as User;
-            userAdapter.friend_Before = label_name.Name;
-        }
-
-        //click to open dialogue window
-
         private void AutoCompleteText()
         {
             //string query = @"select * from tchat.user where user_id !=" + Login.localUser.LocalUser.User_id + ";";
@@ -76,44 +62,14 @@ namespace WindowsFormsApp1.Controller.Host
             string query = "";
 
             if (queryName != "")
-                //query = @"select *from user where User_name like '" + queryName
-                //        + @"%' or nickName like '" + queryName + "%';";
-                query = @"SELECT 
-                                *
-                          FROM
-                                tchat.user
-                          WHERE
-                                User_name NOT IN (SELECT 
-                                                       t1.user_name
-                                                  FROM
-                                                       tchat.user t1
-                                                 INNER JOIN
-                                                  tchat.friends t2 ON t1.user_id = t2.user_id)
-                                AND nickname like '" + queryName + @"%';";
+                query = @"select *from user where User_name like '" + queryName
+                        + @"%' or nickName like '" + queryName + "%';";
             else
                 query = @"select * from tchat.user where User_id< 8;";
 
             ArrayList friends = User.SelectQueryReader(query);
             if (friends.Count == 0)
-            {
-                query = @"SELECT 
-                                *
-                          FROM
-                                tchat.user
-                          WHERE
-                                User_name NOT IN (SELECT 
-                                                       t1.user_name
-                                                  FROM
-                                                       tchat.user t1
-                                                 INNER JOIN
-                                                  tchat.friends t2 ON t1.user_id = t2.user_id)
-                                AND User_name like '" + queryName + @"%';";
-
-                friends = User.SelectQueryReader(query);
-                if (friends.Count == 0)
-                    return;
-            }
-
+                return;
             User friend = (User)friends[0];
             Console.WriteLine("The result of searching:" + friends.Count);
             if (friend.ErrorType == userErrorType.Notexists)
@@ -148,13 +104,27 @@ namespace WindowsFormsApp1.Controller.Host
             //Update the autoCompleteSource
             UpdateAutoCompleteSource(label_name.Text, label_name.Name);
 
-            this.Subscribe_UpdateFriends(Login.localUser.LocalUser);
-            Login.localUser.LocalUser.Run_UpdateFriends();
-            Login.localUser.LocalUser.Run_UpdateFriends();
+            this.Subscribe(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run();
+            Login.localUser.LocalUser.Run();
             //this.UnSubscribe(Login.localUser.LocalUser);
             button.Enabled = false;
            }
 
+        public void Subscribe(User theUser)
+        {
+            theUser.UpdateFriends += new User.UpdateDataHandler(TriggerChange);
+        }
+        public void UnSubscribe(User theUser)
+        {
+            theUser.UpdateFriends -= new User.UpdateDataHandler(TriggerChange);
+        }
+        public void TriggerChange(object theUser, string name)
+        {
+            User userAdapter = theUser as User;
+            userAdapter.nameNothing = label_name.Name;     
+            //Login.localUser.LocalUser.nameNothing = label_name.Name;
+        }
         private void UpdateAutoCompleteSource(string nickname, string userName)
         {
             AutoCompleteStringCollection collumn = searchTBox.AutoCompleteCustomSource;
@@ -166,7 +136,7 @@ namespace WindowsFormsApp1.Controller.Host
         private void label_name_TextChanged(object sender, EventArgs e)
         {
             Label nameLabel = sender as Label;
-            string query = "select * from user where nickname = '" + nameLabel.Text.ToString() + "';";
+            string query = "select *from user where User_name = '" + nameLabel.Name.ToString() + "';";
             ArrayList list = User.SelectQueryReader(query);
             if (list.Count != 1) { MessageBox.Show("Not found, this guy is not one of us"); return; }
 
