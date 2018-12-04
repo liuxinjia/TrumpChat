@@ -135,7 +135,6 @@
             this.MessageReceiver.Size = new System.Drawing.Size(363, 303);
             this.MessageReceiver.TabIndex = 1;
             this.MessageReceiver.Text = "";
-            this.MessageReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MessageReceiver_KeyPress);
             // 
             // MessageSender
             // 
@@ -145,6 +144,7 @@
             this.MessageSender.Size = new System.Drawing.Size(377, 317);
             this.MessageSender.TabIndex = 0;
             this.MessageSender.Text = "";
+            this.MessageSender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MessageSender_KeyPress);
             // 
             // Form1
             // 
