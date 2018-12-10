@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Controller.Host
 {
     public partial class MailController : UserControl
     {
+
         private bool connected = false;
         private Thread tAcceptMsg = null;
         private IPEndPoint ipEndPoint = null;
@@ -25,12 +26,10 @@ namespace WindowsFormsApp1.Controller.Host
         private TextReader tReader = null;
         private TextWriter tWriter = null;
 
-        public User Contacfriend = new User();
-
         public MailController()
         {
             InitializeComponent();
-            //CheckForIllegalCrossThreadCalls = false;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         public bool Connected { get => connected; }
@@ -48,13 +47,12 @@ namespace WindowsFormsApp1.Controller.Host
                     sTemp = tReader.ReadLine();
                     if (sTemp.Length != 0)
                     {
-                        //CreateChatLabel(sTemp);
-                        InvokeCreateButton(sTemp);
+                        flowPanel_Receive.Controls.Add(CreateChatLabel(sTemp));
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Can't connect with Server");
+
                 }
             }
             sockets.Shutdown(SocketShutdown.Both);
@@ -94,35 +92,15 @@ namespace WindowsFormsApp1.Controller.Host
             }
         }
 
-        private void CreateChatLabel(string message)
+        private Label CreateChatLabel(string message)
         {
             Label newLabel = new Label();
-
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new MethodInvoker(delegate { CreateChatLabel(message); }));
-                return;
-            }
-
             newLabel.AutoEllipsis = true;
             newLabel.AutoSize = true;
             newLabel.Top = 40;
             newLabel.Left = 15;
             newLabel.Text = message;
-
-            flowPanel_Receive.Controls.Add(newLabel);
-
-        }
-        
-        private void InvokeCreateButton(string message)
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new MethodInvoker(delegate { InvokeCreateButton(message); }));
-                return;
-            }
-
-            flowPanel_Receive.Controls.Add(CreateChatButton(message));
+            return newLabel;
         }
 
         private Button CreateChatButton(string message)
@@ -204,18 +182,6 @@ namespace WindowsFormsApp1.Controller.Host
             catch (Exception ex)
             {
                 MessageBox.Show("can't communciate with server" + ex.Message);
-            }
-        }
-
-        private void MailController_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                friendLabel_name.Text = Contacfriend.NickName;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error:" + ex.Message);
             }
         }
     }

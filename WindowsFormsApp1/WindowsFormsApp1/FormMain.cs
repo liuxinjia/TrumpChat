@@ -20,6 +20,8 @@ namespace WindowsFormsApp1
         public FormMain()
         {
             InitializeComponent();
+
+            load_friends();
         }
 
         //Event Handler
@@ -28,19 +30,7 @@ namespace WindowsFormsApp1
         //reponse to create updatefriends_button
         public void Subscribe_UpdateFriends(User theUser) => theUser.UpdateFriends += new User.UpdateDataHandler(CreateFlatButton);
         public void Unscribe_UpdateFriends(User theUser) => theUser.UpdateFriends -= new User.UpdateDataHandler(CreateFlatButton);
-        //click to create diaologue window
-        public void Subscribe_OpenDialogue(User theUser, string friend)
-        {
-            theUser.OpenDialogue += new User.OpenDialogueHandler(ClickUpdateChatFriend);
-            theUser.userFriend_before = friend;
-        }
-        private void ClickUpdateChatFriend(object theUser, string friend)
-        {
-            //if (friend == Login.localUser.LocalUser)
-            //    return;
 
-            //User userAdapter = theUser as User;
-        }
         private void CreateFlatButton(object theUser, string nickName)
         {
 
@@ -53,19 +43,7 @@ namespace WindowsFormsApp1
             newButton.Text = nickName;
             newButton.Name = nickName;
             newButton.Dock = DockStyle.Top;
-            newButton.Click += new EventHandler(friends_click);
             flowLayoutPanel1.Controls.Add(newButton);
-        }
-
-        private void friends_click(object sender, EventArgs e)
-        {
-            BunifuFlatButton friendButton = sender as BunifuFlatButton;
-
-            if (friendButton.Text != Login.localUser.LocalUser.NickName)
-            { 
-                this.Subscribe_OpenDialogue(Login.localUser.LocalUser, friendButton.Text);
-                Login.localUser.LocalUser.Run_OpenDialogue();
-            }
         }
 
         //Preload function
@@ -152,11 +130,6 @@ namespace WindowsFormsApp1
             newFriend.Parent = this;
             newFriend.Dock = DockStyle.Left;
             newFriend.Name = "add";            
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            load_friends();
         }
 
         //public void updateFriendList_click(object sender, EventArgs e)

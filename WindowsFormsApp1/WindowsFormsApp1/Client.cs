@@ -23,7 +23,6 @@ namespace WindowsFormsApp1
             friends = new ArrayList();
 
             creatLocalUserTable();
-            loadFriendsTable();
         }
 
         private void creatLocalUserTable()
@@ -77,12 +76,7 @@ namespace WindowsFormsApp1
                 return;
             }
         }
-        private void loadFriendsTable()
-        {
-            string query = @"SELECT * FROM tchat.friends;";
 
-            friends = User.SelectQueryReader(query);
-        }
         public Client()
         {
             MessageBox.Show("Error initialize Client");

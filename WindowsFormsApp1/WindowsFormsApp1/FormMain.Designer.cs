@@ -47,14 +47,14 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.contentHide = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
+            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
             this.friendsPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.contentShow = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.hostControl1 = new WindowsFormsApp1.Controller.Host.HostControl();
-            this.sendMailControl1 = new WindowsFormsApp1.Controller.Mail.sendMailControl();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelHead.SuspendLayout();
@@ -297,6 +297,30 @@
             this.mainPanel.Size = new System.Drawing.Size(1070, 644);
             this.mainPanel.TabIndex = 3;
             // 
+            // hostControl1
+            // 
+            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
+            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.hostControl1.Location = new System.Drawing.Point(200, 0);
+            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.hostControl1.Name = "hostControl1";
+            this.hostControl1.Size = new System.Drawing.Size(870, 644);
+            this.hostControl1.TabIndex = 7;
+            // 
+            // sendMailControl1
+            // 
+            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
+            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
+            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.sendMailControl1.Name = "sendMailControl1";
+            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
+            this.sendMailControl1.TabIndex = 6;
+            // 
             // friendsPanel
             // 
             this.friendsPanel.Controls.Add(this.pictureBox1);
@@ -370,7 +394,7 @@
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(1788, 65);
             this.bunifuFlatButton1.TabIndex = 0;
             this.bunifuFlatButton1.Text = "WayneRonny";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -405,30 +429,6 @@
             this.bunifuDragControl2.TargetControl = this.panel2;
             this.bunifuDragControl2.Vertical = true;
             // 
-            // hostControl1
-            // 
-            this.contentHide.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.hostControl1, BunifuAnimatorNS.DecorationType.None);
-            this.hostControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hostControl1.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.hostControl1.Location = new System.Drawing.Point(200, 0);
-            this.hostControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.hostControl1.Name = "hostControl1";
-            this.hostControl1.Size = new System.Drawing.Size(870, 644);
-            this.hostControl1.TabIndex = 7;
-            // 
-            // sendMailControl1
-            // 
-            this.contentHide.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.contentShow.SetDecoration(this.sendMailControl1, BunifuAnimatorNS.DecorationType.None);
-            this.sendMailControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendMailControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.sendMailControl1.Location = new System.Drawing.Point(200, 0);
-            this.sendMailControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.sendMailControl1.Name = "sendMailControl1";
-            this.sendMailControl1.Size = new System.Drawing.Size(870, 644);
-            this.sendMailControl1.TabIndex = 6;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -443,7 +443,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.Text = resources.GetString("$this.Text");
-            this.Load += new System.EventHandler(this.FormMain_Load);
             this.contentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelHead.ResumeLayout(false);

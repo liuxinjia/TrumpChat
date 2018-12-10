@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.panel_chatTask = new System.Windows.Forms.Panel();
-            this.panel_mail03 = new System.Windows.Forms.Panel();
-            this.panel_mail02 = new System.Windows.Forms.Panel();
-            this.panel_mail01 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.panel_mail01 = new System.Windows.Forms.Panel();
+            this.panel_mail02 = new System.Windows.Forms.Panel();
+            this.panel_mail03 = new System.Windows.Forms.Panel();
             this.mailController1 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.mailController3 = new WindowsFormsApp1.Controller.Host.MailController();
             this.panel_chatTask.SuspendLayout();
-            this.panel_mail02.SuspendLayout();
             this.panel_mail01.SuspendLayout();
+            this.panel_mail02.SuspendLayout();
+            this.panel_mail03.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_chatTask
@@ -51,29 +53,6 @@
             this.panel_chatTask.Name = "panel_chatTask";
             this.panel_chatTask.Size = new System.Drawing.Size(1070, 339);
             this.panel_chatTask.TabIndex = 0;
-            // 
-            // panel_mail03
-            // 
-            this.panel_mail03.Location = new System.Drawing.Point(759, 21);
-            this.panel_mail03.Name = "panel_mail03";
-            this.panel_mail03.Size = new System.Drawing.Size(300, 300);
-            this.panel_mail03.TabIndex = 2;
-            // 
-            // panel_mail02
-            // 
-            this.panel_mail02.Controls.Add(this.mailController2);
-            this.panel_mail02.Location = new System.Drawing.Point(387, 21);
-            this.panel_mail02.Name = "panel_mail02";
-            this.panel_mail02.Size = new System.Drawing.Size(300, 300);
-            this.panel_mail02.TabIndex = 1;
-            // 
-            // panel_mail01
-            // 
-            this.panel_mail01.Controls.Add(this.mailController1);
-            this.panel_mail01.Location = new System.Drawing.Point(15, 21);
-            this.panel_mail01.Name = "panel_mail01";
-            this.panel_mail01.Size = new System.Drawing.Size(300, 300);
-            this.panel_mail01.TabIndex = 0;
             // 
             // panel1
             // 
@@ -91,15 +70,29 @@
             this.panel2.Size = new System.Drawing.Size(699, 305);
             this.panel2.TabIndex = 2;
             // 
-            // mailController2
+            // panel_mail01
             // 
-            this.mailController2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mailController2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.mailController2.Location = new System.Drawing.Point(0, 0);
-            this.mailController2.Margin = new System.Windows.Forms.Padding(4);
-            this.mailController2.Name = "mailController2";
-            this.mailController2.Size = new System.Drawing.Size(300, 300);
-            this.mailController2.TabIndex = 0;
+            this.panel_mail01.Controls.Add(this.mailController1);
+            this.panel_mail01.Location = new System.Drawing.Point(15, 21);
+            this.panel_mail01.Name = "panel_mail01";
+            this.panel_mail01.Size = new System.Drawing.Size(300, 300);
+            this.panel_mail01.TabIndex = 0;
+            // 
+            // panel_mail02
+            // 
+            this.panel_mail02.Controls.Add(this.mailController2);
+            this.panel_mail02.Location = new System.Drawing.Point(387, 21);
+            this.panel_mail02.Name = "panel_mail02";
+            this.panel_mail02.Size = new System.Drawing.Size(300, 300);
+            this.panel_mail02.TabIndex = 1;
+            // 
+            // panel_mail03
+            // 
+            this.panel_mail03.Controls.Add(this.mailController3);
+            this.panel_mail03.Location = new System.Drawing.Point(759, 21);
+            this.panel_mail03.Name = "panel_mail03";
+            this.panel_mail03.Size = new System.Drawing.Size(300, 300);
+            this.panel_mail03.TabIndex = 2;
             // 
             // mailController1
             // 
@@ -111,21 +104,42 @@
             this.mailController1.Size = new System.Drawing.Size(300, 300);
             this.mailController1.TabIndex = 0;
             // 
+            // mailController2
+            // 
+            this.mailController2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mailController2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.mailController2.Location = new System.Drawing.Point(0, 0);
+            this.mailController2.Margin = new System.Windows.Forms.Padding(4);
+            this.mailController2.Name = "mailController2";
+            this.mailController2.Size = new System.Drawing.Size(300, 300);
+            this.mailController2.TabIndex = 0;
+            // 
+            // mailController3
+            // 
+            this.mailController3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mailController3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.mailController3.Location = new System.Drawing.Point(0, 0);
+            this.mailController3.Margin = new System.Windows.Forms.Padding(4);
+            this.mailController3.Name = "mailController3";
+            this.mailController3.Size = new System.Drawing.Size(300, 300);
+            this.mailController3.TabIndex = 0;
+            this.mailController3.Visible = false;
+            // 
             // HostControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_chatTask);
             this.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HostControl";
             this.Size = new System.Drawing.Size(1070, 644);
-            this.Load += new System.EventHandler(this.HostControl_Load);
             this.panel_chatTask.ResumeLayout(false);
-            this.panel_mail02.ResumeLayout(false);
             this.panel_mail01.ResumeLayout(false);
+            this.panel_mail02.ResumeLayout(false);
+            this.panel_mail03.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -136,6 +150,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel_mail03;
+        private MailController mailController3;
         private System.Windows.Forms.Panel panel_mail02;
         private MailController mailController2;
         private System.Windows.Forms.Panel panel_mail01;

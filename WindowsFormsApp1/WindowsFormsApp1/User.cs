@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
     public class User
     {
         public delegate void UpdateDataHandler(object runner, string message);
-        public delegate void OpenDialogueHandler(object sender, string friend);
+
         //User properties
         private string user_name;
         private string nickName;
@@ -29,7 +29,6 @@ namespace WindowsFormsApp1
 
         //Event Handler
         public event UpdateDataHandler UpdateFriends;
-        public event OpenDialogueHandler OpenDialogue;
 
         public string User_name { get => user_name; }
         public string NickName { get => nickName; set => nickName = value; }
@@ -293,13 +292,9 @@ namespace WindowsFormsApp1
         }
 
         //eventHandler to create new dialogue window
-        public string userFriend_before = "";
         public void Run_OpenDialogue()
         {
-            if (OpenDialogue != null)
-            {
-                OpenDialogue(this, userFriend_before);
-            }
+
         }
     }
 }

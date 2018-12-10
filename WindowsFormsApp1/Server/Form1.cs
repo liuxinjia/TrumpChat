@@ -93,6 +93,40 @@ namespace Server
             button1.Enabled = false;
         }
 
+        private void MessageReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (bConnected)
+                {
+                    try
+                    {
+                        lock(this)
+                        {
+                            MessageReceiver.Text += "Client: " + MessageSender.Text;
+                            tWriter.WriteLine(MessageSender.Text);
+
+                            /*another use receive the message*/
+
+                            /*another use receive the message*/
+
+                            tWriter.Flush();
+                            MessageSender.Text = "";
+                            MessageSender.Focus();
+                        }
+                    }
+                    catch(Exception exception)
+                    {
+                        MessageBox.Show("Can't connect with client :"+ clientSocket.RemoteEndPoint.ToString() + exception.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please connect one client first");
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -109,41 +143,6 @@ namespace Server
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void MessageSender_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                if (bConnected)
-                {
-                    try
-                    {
-                        lock (this)
-                        {
-                            MessageReceiver.Text += "Server: " + MessageSender.Text;
-                            tWriter.WriteLine(MessageSender.Text);
-
-                            /*another use receive the message*/
-
-                            /*another use receive the message*/
-
-                            tWriter.Flush();
-                            MessageSender.Text = "";
-                            MessageSender.Focus();
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show("Can't connect with client :" + clientSocket.RemoteEndPoint.ToString() + exception.Message);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please connect one client first");
-                }
-            }
-
         }
     }
 }
