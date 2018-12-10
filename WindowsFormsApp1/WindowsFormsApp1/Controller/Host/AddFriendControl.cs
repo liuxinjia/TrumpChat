@@ -23,13 +23,17 @@ namespace WindowsFormsApp1.Controller.Host
         //Event Handler
         //--------------
 
-        //tigger to create new friends button
-        public void Subscribe_UpdateFriends(User theUser) => theUser.UpdateFriends += new User.UpdateDataHandler(TriggerUpdateFriends);
+        //trigger to create new friends button
+        public void Subscribe_UpdateFriends(User theUser, string message)
+        {
+            theUser.UpdateFriends += new User.UpdateDataHandler(TriggerUpdateFriends);
+            theUser.friend_Before = message;    
+        }
         public void UnSubscribe_UpdateFriends(User theUser) => theUser.UpdateFriends -= new User.UpdateDataHandler(TriggerUpdateFriends);
         public void TriggerUpdateFriends(object theUser, string name)
         {
-            User userAdapter = theUser as User;
-            userAdapter.friend_Before = label_name.Name;
+            //User userAdapter = theUser as User;
+            //userAdapter.friend_Before = label_name.Name;
         }
 
         //click to open dialogue window
@@ -148,9 +152,9 @@ namespace WindowsFormsApp1.Controller.Host
             //Update the autoCompleteSource
             UpdateAutoCompleteSource(label_name.Text, label_name.Name);
 
-            this.Subscribe_UpdateFriends(Login.localUser.LocalUser);
+            this.Subscribe_UpdateFriends(Login.localUser.LocalUser, label_name.Text);
             Login.localUser.LocalUser.Run_UpdateFriends();
-            Login.localUser.LocalUser.Run_UpdateFriends();
+            //Login.localUser.LocalUser.Run_UpdateFriends();
             //this.UnSubscribe(Login.localUser.LocalUser);
             button.Enabled = false;
            }

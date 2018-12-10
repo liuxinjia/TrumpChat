@@ -33,7 +33,7 @@
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
-            this.label_name = new Bunifu.UI.WinForms.BunifuLabel();
+            this.friendLabel_name = new Bunifu.UI.WinForms.BunifuLabel();
             this.panel_editChat = new System.Windows.Forms.Panel();
             this.chatTBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel_chatlog = new System.Windows.Forms.Panel();
@@ -56,7 +56,7 @@
             this.panel1.Controls.Add(this.bunifuImageButton3);
             this.panel1.Controls.Add(this.bunifuImageButton2);
             this.panel1.Controls.Add(this.bunifuPictureBox1);
-            this.panel1.Controls.Add(this.label_name);
+            this.panel1.Controls.Add(this.friendLabel_name);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -106,18 +106,18 @@
             this.bunifuPictureBox1.TabStop = false;
             this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
             // 
-            // label_name
+            // friendLabel_name
             // 
-            this.label_name.AutoEllipsis = false;
-            this.label_name.CursorType = null;
-            this.label_name.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.label_name.Location = new System.Drawing.Point(56, 32);
-            this.label_name.Name = "label_name";
-            this.label_name.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label_name.Size = new System.Drawing.Size(100, 20);
-            this.label_name.TabIndex = 0;
-            this.label_name.Text = "FriendName";
-            this.label_name.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.friendLabel_name.AutoEllipsis = false;
+            this.friendLabel_name.CursorType = null;
+            this.friendLabel_name.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.friendLabel_name.Location = new System.Drawing.Point(56, 32);
+            this.friendLabel_name.Name = "friendLabel_name";
+            this.friendLabel_name.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.friendLabel_name.Size = new System.Drawing.Size(100, 20);
+            this.friendLabel_name.TabIndex = 0;
+            this.friendLabel_name.Text = "FriendName";
+            this.friendLabel_name.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             // 
             // panel_editChat
             // 
@@ -171,7 +171,7 @@
             // 
             // flowPanel_Receive
             // 
-            this.flowPanel_Receive.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowPanel_Receive.BackColor = System.Drawing.Color.Snow;
             this.flowPanel_Receive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanel_Receive.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowPanel_Receive.Location = new System.Drawing.Point(0, 0);
@@ -209,6 +209,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MailController";
             this.Size = new System.Drawing.Size(300, 300);
+            this.Load += new System.EventHandler(this.MailController_Load);
             this.Enter += new System.EventHandler(this.MailController_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -227,7 +228,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
-        private Bunifu.UI.WinForms.BunifuLabel label_name;
+        private Bunifu.UI.WinForms.BunifuLabel friendLabel_name;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton3;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
         private System.Windows.Forms.Panel panel_editChat;
