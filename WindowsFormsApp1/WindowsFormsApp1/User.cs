@@ -192,7 +192,7 @@ namespace WindowsFormsApp1
                 {
                     count = Convert.ToInt32(commandDataBase.ExecuteScalar());
                 }
-                catch (Exception e)
+                catch
                 {
                     return userErrorType.Notexists;
                 }
@@ -217,7 +217,7 @@ namespace WindowsFormsApp1
                         return userErrorType.Password;
                     }
                 }
-                catch (Exception e)
+                catch
                 {
                     return userErrorType.Notexists;
                 }

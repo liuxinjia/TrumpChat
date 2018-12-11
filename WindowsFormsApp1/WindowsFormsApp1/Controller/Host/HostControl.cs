@@ -55,8 +55,27 @@ namespace WindowsFormsApp1.Controller.Host
 
         private void HostControl_Load(object sender, EventArgs e)
         {
+            //this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
+            //Login.localUser.LocalUser.Run_OpenDialogue();
+        }
+
+        private void BunifuFlatButton_Tostart_Click(object sender, EventArgs e)
+        {
             this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             Login.localUser.LocalUser.Run_OpenDialogue();
+
+           // panel_loadmail.Controls.Clear();
+            panel_loadmail.Visible = false;
+        }
+
+        private void bunifuFlatButton_StartChat_Click(object sender, EventArgs e)
+        {
+            this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run_OpenDialogue();
+
+            // panel_loadmail.Controls.Clear();
+            panel_loadmail.Visible = false;
+
         }
     }
 }
