@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    class Client
+    public class Client
     {
         private ArrayList friends;
         private User localUser;
+        public readonly static int User_port = 7;
 
         internal ArrayList Friends { get => friends; }
         internal User LocalUser { get => localUser; }

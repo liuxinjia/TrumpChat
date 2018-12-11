@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-    public enum userErrorType { Notexists, Exists, Name, Nickname, Password, ID }
+    public enum userErrorType { Notexists, Exists, Name, Nickname, Password, ID, IPAddress }
     public enum QueryEnum { Scalar, NonQuery, Reader }
     public enum UpdateType { Update, Insert, Delete};
 

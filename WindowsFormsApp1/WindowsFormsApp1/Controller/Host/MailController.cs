@@ -146,7 +146,7 @@ namespace WindowsFormsApp1.Controller.Host
         {
             try
             {
-                //Recommend to remove the control from parents rather than dispose it to kill it purely;
+                //Recommend to remove the control from its parents rather than dispose it to kill it purely;
                 this.Dispose();
 
                 sockets.Close();
