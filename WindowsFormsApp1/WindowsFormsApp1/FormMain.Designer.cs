@@ -394,7 +394,7 @@
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(9181, 66);
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(14465, 66);
             this.bunifuFlatButton1.TabIndex = 0;
             this.bunifuFlatButton1.Text = "WayneRonny";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

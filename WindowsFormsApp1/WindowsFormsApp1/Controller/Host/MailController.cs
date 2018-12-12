@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Controller.Host
         private TextReader tReader = null;
         private TextWriter tWriter = null;
 
-        public User Contacfriend = new User();
+        public User Contactfriend = new User();
 
         public MailController()
         {
@@ -211,7 +211,7 @@ namespace WindowsFormsApp1.Controller.Host
         {
             try
             {
-                friendLabel_name.Text = Contacfriend.NickName;
+                friendLabel_name.Text = Contactfriend.NickName;
             }
             catch(Exception ex)
             {

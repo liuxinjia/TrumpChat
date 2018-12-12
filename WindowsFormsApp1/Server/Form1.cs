@@ -81,47 +81,6 @@ namespace Server
             sockets.Close();
         }
 
-        private void UpdateClientIPAddress()
-        {
-            string myHostName = Dns.GetHostName();
-            //string _myHostIP = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault<IPAddress>(a => a.AddressFamily.ToString().Equals("InterNetwork")).ToString();
-
-            string networkNumber = "";
-            foreach (IPAddress ipAd in Dns.GetHostEntry(myHostName).AddressList)
-            {
-                if (ipAd.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    string ipV4 = ipAd.ToString();
-                    networkNumber = ipV4.Remove(ipV4.LastIndexOf('.'));
-                }
-            }
-            if (networkNumber == "")
-            {
-                MessageBox.Show("ERROR: Dont' have a IPv4 ");
-                return;
-            }
-            for (int i = 1; i <= 255; i++)
-            {
-                Ping myPing = new Ping();
-
-                string pingIP = networkNumber + '.' + i.ToString();
-                myPing.SendAsync(pingIP, 1000, null);
-
-                myPing.PingCompleted += new PingCompletedEventHandler(myPing_PingCompleted);
-
-            }
-        }
-
-        private void myPing_PingCompleted(object sender, PingCompletedEventArgs e)
-        {
-            if (e.Reply.Status == IPStatus.Success)
-            {
-                IPList.Add(e.Reply.Address.ToString());
-                //RichBox_RemoteClient.Text += e.Reply.Address.ToString() + "\n";
-                for (int i = 0; i < IPList.Count; i++)
-                    RichBox_RemoteClient.Text += IPList[i].ToString() + "\n";
-            }
-        }
         //Control function
         //----------------------
 
@@ -145,7 +104,8 @@ namespace Server
             listenUDPThread.IsBackground = true;
             listenUDPThread.Start();
 
-            UpdateClientIPAddress();
+            UpdateOnlineList updateOnlineList = new UpdateOnlineList(this.RichBox_RemoteClient);
+            updateOnlineList.UpdateClientIPAddress();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

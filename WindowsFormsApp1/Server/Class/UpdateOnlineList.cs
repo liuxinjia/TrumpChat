@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -13,7 +15,10 @@ namespace Server.Class
     {
         private ListView onlineUser;
         private Label label_serverStatus;
+        private RichTextBox RichBox_RemoteClient;
+
         private int IP_port = Client.User_port;
+        public List<string> IPList = new List<string>();
 
         public UpdateOnlineList(ListView onlineListView, Label label_info)
         {
@@ -21,6 +26,10 @@ namespace Server.Class
             this.label_serverStatus = label_info;
         }
 
+        public UpdateOnlineList(RichTextBox idTextBox)
+        {
+            this.RichBox_RemoteClient = idTextBox;
+        }
         public void StartUpdateOnlineList()
         {
             UdpClient server = new UdpClient(IP_port);
@@ -98,6 +107,11 @@ namespace Server.Class
                         MessageBox.Show("The Error info :" + e.Message);
                     }
                 }
+
+                if (acceptData == "IsOnline:")
+                {
+
+                }
             }
         }
 
@@ -137,6 +151,48 @@ namespace Server.Class
             catch(Exception e)
             {
                 MessageBox.Show("UpdateOnlineList.cs; Line: 137;Can't write into netstream" + e.Message);
+            }
+        }
+
+        public void UpdateClientIPAddress()
+        {
+            string myHostName = Dns.GetHostName();
+            //string _myHostIP = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault<IPAddress>(a => a.AddressFamily.ToString().Equals("InterNetwork")).ToString();
+
+            string networkNumber = "";
+            foreach (IPAddress ipAd in Dns.GetHostEntry(myHostName).AddressList)
+            {
+                if (ipAd.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    string ipV4 = ipAd.ToString();
+                    networkNumber = ipV4.Remove(ipV4.LastIndexOf('.'));
+                }
+            }
+            if (networkNumber == "")
+            {
+                MessageBox.Show("ERROR: Dont' have a IPv4 ");
+                return;
+            }
+            for (int i = 1; i <= 255; i++)
+            {
+                Ping myPing = new Ping();
+
+                string pingIP = networkNumber + '.' + i.ToString();
+                myPing.SendAsync(pingIP, 1000, null);
+
+                myPing.PingCompleted += new PingCompletedEventHandler(myPing_PingCompleted);
+
+            }
+        }
+
+        private void myPing_PingCompleted(object sender, PingCompletedEventArgs e)
+        {
+            if (e.Reply.Status == IPStatus.Success)
+            {
+                IPList.Add(e.Reply.Address.ToString());
+                //RichBox_RemoteClient.Text += e.Reply.Address.ToString() + "\n";
+                for (int i = 0; i < IPList.Count; i++)
+                    RichBox_RemoteClient.Text += IPList[i].ToString() + "\n";
             }
         }
     }
