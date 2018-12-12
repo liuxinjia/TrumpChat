@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     {
         private ArrayList friends;
         private User localUser;
-        public readonly static int User_port = 7;
+        public readonly static int User_port = 10;
 
         internal ArrayList Friends { get => friends; }
         internal User LocalUser { get => localUser; }

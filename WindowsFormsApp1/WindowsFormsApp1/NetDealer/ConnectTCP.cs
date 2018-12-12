@@ -10,18 +10,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Net
+namespace WindowsFormsApp1.NetDealer
 {
     public class ConnectTCP
     {
         //TCP 
         private IPEndPoint ipEndPoint = null;
-        private Socket replySocket = null;
+        public Socket replySocket = null;
         private NetworkStream networkStram = null;
-        private TextWriter tWriter = null;
-        private TextReader tReader = null;
+        public TextWriter tWriter = null;
+        public TextReader tReader = null;
 
-        public Thread tAcceptMsg = null;
         public bool connected = false;
 
         private IPAddress clientIPAddress = null;
@@ -31,11 +30,14 @@ namespace WindowsFormsApp1.Net
         public ConnectTCP(IPAddress ipAddress)
         {
             clientIPAddress = ipAddress;
+            replySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
             ipEndPoint = new IPEndPoint(clientIPAddress, Client.User_port);
 
             if (!ConnectFriend_IPAddress())
                 return;
 
+            //SendMessage("Hello", ref tWriter);
         }
         public bool ConnectFriend_IPAddress()
         {
@@ -60,20 +62,32 @@ namespace WindowsFormsApp1.Net
             {
                 ConnectFriend_TCP();
                 SendMessageTCP("Got you!");
+                //SendMessage("Hello", ref tWriter);
+
             }
         }
 
         private void SendMessageTCP(string ReplyMessage)
         {
             byte[] buff = Encoding.Default.GetBytes(ReplyMessage);
-            SendMessage(buff, ref tWriter);
+            SendMessage(ReplyMessage, ref tWriter);
+
+            try
+            {
+                buff = Encoding.Default.GetBytes("Fuck you");
+                //replySocket.Send(buff);
+            }
+            catch
+
+            {
+                MessageBox.Show("Error2");
+            }
         }
 
-        private void ConnectFriend_TCP()
+        public void ConnectFriend_TCP()
         {
             try
             {
-                replySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 replySocket.Connect(ipEndPoint);
 
                 if (replySocket.Connected)
@@ -82,19 +96,17 @@ namespace WindowsFormsApp1.Net
                     tWriter = new StreamWriter(networkStram);
                     tReader = new StreamReader(networkStram);
 
-                    tAcceptMsg = new Thread(new ThreadStart(this.AcceptMessage));
-                    tAcceptMsg.Start();
                     connected = true;
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: UpdateOnlineList.cs; Line: 129; can't communicate with client" + e.Message);
+                MessageBox.Show("Error: ConnectTCP.cs; Line: 102; can't communicate with client" + e.Message);
             }
         }
 
 
-        private void SendMessage(byte[] buff, ref TextWriter tWriter)
+        public void SendMessage(byte[] buff, ref TextWriter tWriter)
         {
             try
             {
@@ -106,27 +118,17 @@ namespace WindowsFormsApp1.Net
                 MessageBox.Show("UpdateOnlineList.cs; Line: 137;Can't write into netstream" + e.Message);
             }
         }
-        private void AcceptMessage()
+        public void SendMessage(string buff, ref TextWriter tWriter)
         {
-            string sTemp;
-
-            while (connected)
+            try
             {
-                try
-                {
-                    sTemp = tReader.ReadLine();
-                    if (sTemp.Length != 0)
-                    {
-
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Can't connect with Server");
-                }
+                tWriter.WriteLine(buff);
+                tWriter.Flush();
             }
-            replySocket.Shutdown(SocketShutdown.Both);
-            replySocket.Close();
+            catch (Exception e)
+            {
+                MessageBox.Show("ConnectTCP.cs; Line: 128;Can't write into netstream" + e.Message);
+            }
         }
     }
 }

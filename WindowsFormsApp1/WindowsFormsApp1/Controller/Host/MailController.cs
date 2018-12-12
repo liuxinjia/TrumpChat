@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 using Bunifu.Framework.UI;
+using WindowsFormsApp1.NetDealer;
 
 namespace WindowsFormsApp1.Controller.Host
 {
@@ -19,13 +20,15 @@ namespace WindowsFormsApp1.Controller.Host
     {
         private bool connected = false;
         private Thread tAcceptMsg = null;
-        private IPEndPoint ipEndPoint = null;
-        private Socket sockets = null;
-        private NetworkStream netWorkStream = null;
-        private TextReader tReader = null;
-        private TextWriter tWriter = null;
+        //private IPEndPoint ipEndPoint = null;
+        //private Socket sockets = null;
+        //private NetworkStream netWorkStream = null;
+        //private TextReader tReader = null;
+        //private TextWriter tWriter = null;
 
         public User Contactfriend = new User();
+
+        private ConnectTCP tcpClient;
 
         public MailController()
         {
@@ -33,6 +36,7 @@ namespace WindowsFormsApp1.Controller.Host
             //CheckForIllegalCrossThreadCalls = false;
         }
 
+        private bool justConnectedBefore = false;
         public bool Connected { get => connected; }
 
         //private function
@@ -41,24 +45,46 @@ namespace WindowsFormsApp1.Controller.Host
         {
             string sTemp;
 
-            while(Connected)
+            //while(Connected)
+            //{
+            //    try
+            //    {
+            //        sTemp = tReader.ReadLine();
+            //        if (sTemp.Length != 0)
+            //        {
+            //            //CreateChatLabel(sTemp);
+            //            InvokeCreateButton(sTemp);
+            //        }
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Can't connect with Server");
+            //    }
+            //}
+            //sockets.Shutdown(SocketShutdown.Both);
+            //sockets.Close();
+
+            while(tcpClient.connected)
             {
                 try
                 {
-                    sTemp = tReader.ReadLine();
+                    sTemp = tcpClient.tReader.ReadLine();
                     if (sTemp.Length != 0)
                     {
-                        //CreateChatLabel(sTemp);
                         InvokeCreateButton(sTemp);
                     }
+                    justConnectedBefore = true;
                 }
                 catch
                 {
                     MessageBox.Show("Can't connect with Server");
                 }
             }
-            sockets.Shutdown(SocketShutdown.Both);
-            sockets.Close();
+            if (justConnectedBefore)
+            {
+                tcpClient.replySocket.Shutdown(SocketShutdown.Both);
+                tcpClient.replySocket.Close();
+            }
         }
 
         //Controls funtion
@@ -72,25 +98,34 @@ namespace WindowsFormsApp1.Controller.Host
             {
                 flowPanel_Send.Controls.Add(CreateChatButton(chatMetroTBox.Text));
 
-                if (connected)
+                //if (connected)
+                //{
+                //    try
+                //    {
+                //        tWriter.WriteLine(chatTBox.Text);
+                //        tWriter.Flush();
+                //        chatTBox.Text = "";
+                //        chatTBox.Focus();
+                //    }
+                //    catch(Exception ex)
+                //    {
+                //        MessageBox.Show("disconnected with the server " + ex.Message);
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Can't connect with server");
+                //}
+                if (tcpClient.connected)
                 {
-                    try
-                    {
-                        tWriter.WriteLine(chatTBox.Text);
-                        tWriter.Flush();
-                        chatTBox.Text = "";
-                        chatTBox.Focus();
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("disconnected with the server " + ex.Message);
-                    }
+                    tcpClient.SendMessage(chatTBox.Text, ref tcpClient.tWriter);
+                    chatTBox.Text = "";
+                    chatTBox.Focus();
                 }
                 else
                 {
                     MessageBox.Show("Can't connect with server");
                 }
-
             }
         }
 
@@ -149,7 +184,8 @@ namespace WindowsFormsApp1.Controller.Host
                 //Recommend to remove the control from its parents rather than dispose it to kill it purely;
                 this.Dispose();
 
-                sockets.Close();
+                //sockets.Close();
+                tcpClient.replySocket.Close();
                 tAcceptMsg.Abort();
             }
             catch(Exception ex)
@@ -184,27 +220,31 @@ namespace WindowsFormsApp1.Controller.Host
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ipEndPoint = new IPEndPoint(IPAddress.Parse(Login.localUser.LocalUser.User_address),
-                    Login.localUser.LocalUser.User_port);
-                sockets = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sockets.Connect(ipEndPoint);
-                if (sockets.Connected)
-                {
-                    netWorkStream = new NetworkStream(sockets);
-                    tWriter = new StreamWriter(netWorkStream);
-                    tReader = new StreamReader(netWorkStream);
-                    tAcceptMsg = new Thread(new ThreadStart(this.AcceptMessage));
-                    tAcceptMsg.Start();
-                    connected = true;
-                    new Alert("Connected with server, next communicating", AlertType.success);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("can't communciate with server" + ex.Message);
-            }
+            //try
+            //{
+            //    ipEndPoint = new IPEndPoint(IPAddress.Parse(Login.localUser.LocalUser.User_address),
+            //        Login.localUser.LocalUser.User_port);
+            //    sockets = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //    sockets.Connect(ipEndPoint);
+            //    if (sockets.Connected)
+            //    {
+            //        netWorkStream = new NetworkStream(sockets);
+            //        tWriter = new StreamWriter(netWorkStream);
+            //        tReader = new StreamReader(netWorkStream);
+            //        tAcceptMsg = new Thread(new ThreadStart(this.AcceptMessage));
+            //        tAcceptMsg.Start();
+            //        connected = true;
+            //        new Alert("Connected with server, next communicating", AlertType.success);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("can't communciate with server" + ex.Message);
+            //}
+            tcpClient = new ConnectTCP(IPAddress.Parse(Login.localUser.LocalUser.User_address));
+
+            tAcceptMsg = new Thread(new ThreadStart(AcceptMessage));
+            tAcceptMsg.Start();
         }
 
         private void MailController_Load(object sender, EventArgs e)

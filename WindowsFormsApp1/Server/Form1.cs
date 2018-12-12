@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace Server
 {
@@ -29,8 +30,8 @@ namespace Server
         private Socket clientSocket = null;
 
         private NetworkStream networkStream = null;
-        private TextReader tReader = null;
-        private TextWriter tWriter = null;
+        public TextReader tReader = null;
+        public TextWriter tWriter = null;
 
         public Form1()
         {
@@ -55,12 +56,17 @@ namespace Server
             tReader = new StreamReader(networkStream);
             tWriter = new StreamWriter(networkStream);
             string sTemp = null;
+            byte[] buff = new byte[102];
 
-            while(bConnected)
+            while (bConnected)
             {
                 try
-                {
+                {                    
                     sTemp = tReader.ReadLine();
+
+                    //clientSocket.Receive(buff);
+                    //sTemp = Encoding.Default.GetString(buff);
+
                     if (sTemp != null)
                     {
                         lock(this)
@@ -86,7 +92,7 @@ namespace Server
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ipEndPoint = new IPEndPoint(IPAddress.Any, 7);
+            ipEndPoint = new IPEndPoint(IPAddress.Any, Client.User_port);
             sockets = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             sockets.Bind(ipEndPoint);
             sockets.Listen(0);
