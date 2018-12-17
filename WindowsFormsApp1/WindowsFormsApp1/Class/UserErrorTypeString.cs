@@ -14,15 +14,15 @@ namespace WindowsFormsApp1
         {
             if (errorType == userErrorType.Notexists)
                 errorTypeString = "Notexists";
-            if (errorType == userErrorType.Exists)
+            else if (errorType == userErrorType.Exists)
                 errorTypeString = "Exists";
-            if (errorType == userErrorType.Name)
+            else if (errorType == userErrorType.Name)
                 errorTypeString = "Name";
-            if (errorType == userErrorType.Nickname)
+            else if (errorType == userErrorType.Nickname)
                 errorTypeString = "Nickname";
-            if (errorType == userErrorType.Password)
+            else if (errorType == userErrorType.Password)
                 errorTypeString = "Password";
-            if (errorType == userErrorType.IPAddress)
+            else if (errorType == userErrorType.IPAddress)
                 errorTypeString = "IPAddress";
         }
 

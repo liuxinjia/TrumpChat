@@ -20,6 +20,12 @@ namespace Server.Class
         private int IP_port = Client.User_port;
         public List<string> IPList = new List<string>();
 
+        //TCP
+        IPEndPoint ipEndPoint = null;
+        Socket replySocket = null;
+        NetworkStream networkStram = null;
+        TextWriter tWriter = null;
+
         public UpdateOnlineList(ListView onlineListView, Label label_info)
         {
             this.onlineUser = onlineListView;
@@ -40,7 +46,7 @@ namespace Server.Class
             string returnMessage = null;
             while (true)
             {
-                acceptData = System.Text.Encoding.UTF8.GetString(server.Receive(ref ipEndPoint));
+                acceptData = System.Text.Encoding.Default.GetString(server.Receive(ref ipEndPoint));
                 
                 string acceptDataType = acceptData.Substring(0, 9);
 
@@ -117,10 +123,7 @@ namespace Server.Class
 
         public void ReplyTCP(string ReplyMessage, string ipAddress)
         {
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(ipAddress), IP_port);
-            Socket replySocket = null;
-            NetworkStream networkStram = null;
-            TextWriter tWriter = null;
+            ipEndPoint = new IPEndPoint(IPAddress.Parse(ipAddress), IP_port);
 
             byte[] buff = Encoding.Default.GetBytes(ReplyMessage);
             try
@@ -154,6 +157,10 @@ namespace Server.Class
             }
         }
 
+        private void verifyData()
+        {
+
+        }
         public void UpdateClientIPAddress()
         {
             string myHostName = Dns.GetHostName();

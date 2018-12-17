@@ -163,11 +163,6 @@
     <Compile Include="NetDealer\ConnectTCP.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tchatDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tchatDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserErrorTypeString.cs" />
     <EmbeddedResource Include="Alert.resx">
@@ -215,17 +210,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="tchatDataSet.xsc">
-      <DependentUpon>tchatDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="tchatDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>tchatDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="tchatDataSet.xss">
-      <DependentUpon>tchatDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

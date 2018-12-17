@@ -69,8 +69,7 @@ namespace WindowsFormsApp1
             MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
 
             DataSet dataSet = new DataSet();
-
-
+       
             try
             {
                 dataBaseConnection.Open();
@@ -222,7 +221,21 @@ namespace WindowsFormsApp1
                     return userErrorType.Notexists;
                 }
             }
-
+            else if (q == QueryEnum.Scalar)
+            {
+                try
+                {
+                    int reflectRows =  commandDataBase.ExecuteNonQuery();
+                    if (reflectRows == 0)
+                    {
+                        MessageBox.Show("0 row(s) affected");
+                    }
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
             dataBaseConnection.Close();
             return userErrorType.Exists;
         }

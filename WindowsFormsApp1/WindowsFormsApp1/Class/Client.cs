@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,9 +15,11 @@ namespace WindowsFormsApp1
         private ArrayList friends;
         private User localUser;
         public readonly static int User_port = 10;
+        //public readonly static string hostIPAddress = "192.168.43.65";
+        public readonly static string hostIPAddress = "10.18.41.54";
 
         internal ArrayList Friends { get => friends; }
-        internal User LocalUser { get => localUser; }
+        public User LocalUser { get => localUser; }
 
         public Client(User me)
         {

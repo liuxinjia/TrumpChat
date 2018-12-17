@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using WindowsFormsApp1.NetDealer;
 
 namespace WindowsFormsApp1
 {
@@ -19,6 +22,11 @@ namespace WindowsFormsApp1
         public loginForm()
         {
             InitializeComponent();
+            autoCompleteName();
+            if (!checkDataBaseExists())
+            {
+                generateDataBase();
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -32,8 +40,10 @@ namespace WindowsFormsApp1
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            if (CheckUserDate() == false) { return; }
+            //if (CheckUserDate() == false) { return; }
             string User_Name = nameTbox.Text;
+            string password = pwTbox.Text;
+            if (verifyExistence(User_Name,password) == false) { return; }
 
             string query = @"select *from user where User_name = '" + User_Name + "';";
             ArrayList list = User.SelectQueryReader(query);
@@ -48,6 +58,87 @@ namespace WindowsFormsApp1
             this.Enabled = false;
         }
 
+        private void updateRecentUser(User localUser)
+        {
+            string query = "SELECT * FROM tchat.recentuser WHERE nickname = '" +  localUser.NickName + "'; ";
+
+            if (User.RunQuery(query, QueryEnum.Scalar) == userErrorType.Exists)
+                return;
+
+            string updateQuery = "SELECT * FROM tchat.recentuser;";
+            User.UpdateQueryAdapter(updateQuery, localUser);
+        }
+        private void autoCompleteName()
+        {
+            string query = "SELECT * FROM tchat.recentuser;";
+
+            ArrayList recentUser = User.SelectQueryReader(query);
+
+            if (recentUser.Count == 0)
+                return;
+
+            User user = (User)recentUser[0];
+
+            nameTbox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            nameTbox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collumn = new AutoCompleteStringCollection();
+
+            if (user.ErrorType == userErrorType.Notexists)
+            {
+                new Alert("Not user exists", AlertType.warning);
+            }
+            else
+            {
+                for (int i = 0; i < recentUser.Count; i++)
+                {
+                    user = (User)recentUser[i];
+                    collumn.Add(user.User_name);
+                }
+            }
+
+            nameTbox.AutoCompleteCustomSource = collumn;
+        }
+        private bool checkDataBaseExists()
+        {
+            string MySQLConnectionString = "server=127.0.0.1;user id=root;password=Kobe1997911;" +
+            "persistsecurityinfo=True;database=tchat";
+
+            MySqlConnection dataBaseConnection = new MySqlConnection(MySQLConnectionString);
+
+            try
+            {
+                dataBaseConnection.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Can't connect with dataBase. " + e.Message);
+                return false;
+            }
+
+            return true;
+        }
+        private void generateDataBase()
+        {
+            if (!File.Exists(Application.StartupPath + "\\CreateTables.sql"))
+            {
+                MessageBox.Show("Can't find the CreateTables.sql");
+                return;
+            }
+
+            string line = "";
+            string cmd = "";
+            TextReader tReader = new StreamReader(Application.StartupPath + "\\CreateTables.sql");
+
+            while ((line = tReader.ReadLine()) != null)
+            {
+                cmd += line;
+            }
+
+            if (cmd.Length > 0)
+            {
+                User.RunQuery(cmd, QueryEnum.NonQuery);
+            }
+        }
         private bool CheckUserDate()
         {
             int y_Top = 0;
@@ -91,6 +182,37 @@ namespace WindowsFormsApp1
             return true;
         }
 
+        public bool verifyExistence(string userName, string password = null)
+        {
+            int y_Top = 0;
+            int x_Left = 0;
+
+            ConnectTCP hostServer = new ConnectTCP(IPAddress.Parse(Client.hostIPAddress));
+
+            string verification = "Username:" + userName + ";password:" + password + ";End;";
+            Byte[] bytesSend = Encoding.Default.GetBytes(verification);
+            hostServer.SendMessage(bytesSend);
+
+            string verifyResult = Encoding.Default.GetString(hostServer.receiveMessage());
+            if (verifyResult == new UserErrorTypeString(userErrorType.Notexists).ErrorTypeString)
+            {
+                LoginUp register = new LoginUp();
+                register.Show();
+                Alert.show("Please login up first!", AlertType.info, x_Left, y_Top);
+                this.Visible = false;
+                this.Enabled = false;
+                return false;
+            }
+            else if (verifyResult == new UserErrorTypeString(userErrorType.Password).ErrorTypeString)
+            {
+                Alert.show("Error: The keyword your enter does not fit", AlertType.error, x_Left, y_Top);
+                return false;
+            }
+
+            Alert.show("Welcome Back!", AlertType.success, x_Left, y_Top);
+            return true;
+
+        }
         private void bunifuThinButton22_Click(object sender, EventArgs e)
         {
             LoginUp register = new LoginUp();

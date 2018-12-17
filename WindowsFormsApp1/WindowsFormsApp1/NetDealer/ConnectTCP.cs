@@ -42,16 +42,21 @@ namespace WindowsFormsApp1.NetDealer
         public bool ConnectFriend_IPAddress()
         {
             Ping myPing = new Ping();
-            
+
             try
             {
                 myPing.SendAsync(clientIPAddress, 1000, null);
                 myPing.PingCompleted += new PingCompletedEventHandler(connectPing_Completed);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Error: can't ping your friend" + e.Message);
                 return false;
+            }
+
+            if (myPing != null)
+            {
+                ConnectFriend_TCP();
             }
 
             return true;
@@ -70,7 +75,7 @@ namespace WindowsFormsApp1.NetDealer
         private void SendMessageTCP(string ReplyMessage)
         {
             byte[] buff = Encoding.Default.GetBytes(ReplyMessage);
-            SendMessage(ReplyMessage, ref tWriter);
+            SendMessage(ReplyMessage);
 
             try
             {
@@ -88,8 +93,10 @@ namespace WindowsFormsApp1.NetDealer
         {
             try
             {
-                replySocket.Connect(ipEndPoint);
+                if (!replySocket.Connected)
+                    replySocket.Connect(ipEndPoint);
 
+              
                 if (replySocket.Connected)
                 {
                     networkStram = new NetworkStream(replySocket);
@@ -101,12 +108,58 @@ namespace WindowsFormsApp1.NetDealer
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: ConnectTCP.cs; Line: 102; can't communicate with client" + e.Message);
+                MessageBox.Show("Error: ConnectTCP.cs; LocationConnectFriend_TCP(; " + e.Message);
             }
         }
 
+        public void ReplyTCP(string ReplyMessage, Socket replySocket)
+        {
+            byte[] buff = Encoding.Default.GetBytes(ReplyMessage);
+            try
+            {
+                if (replySocket.Connected)
+                {
+                    SendMessage(buff);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: UpdateOnlineList.cs; Line: 129; can't communicate with client" + e.Message);
+            }
+        }
 
-        public void SendMessage(byte[] buff, ref TextWriter tWriter)
+        public void SendMessage(byte[] buff)
+        {
+            try
+            {
+                replySocket.Send(buff);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("UpdateOnlineList.cs; Location:public void SendMessage(byte[] buff)" + e.Message);
+            }
+        }
+        public byte[] receiveMessage()
+        {
+            byte[] buff = new byte[256];
+            int bytes = 0;
+            //do
+            //{
+            //    bytes = replySocket.Receive(buff, buff.Length, 0);
+            //}
+            //while (bytes > 0);
+            bytes = replySocket.Receive(buff, buff.Length, 0);
+
+            int i = buff.Length - 1;
+            while (buff[i] == 0)
+                i--;
+
+            byte[] trimBytes = new byte[i + 1];
+            Array.Copy(buff, trimBytes, i+1);
+
+            return trimBytes;
+        }
+        public void SendMessage(string buff)
         {
             try
             {
@@ -115,19 +168,22 @@ namespace WindowsFormsApp1.NetDealer
             }
             catch (Exception e)
             {
-                MessageBox.Show("UpdateOnlineList.cs; Line: 137;Can't write into netstream" + e.Message);
+                MessageBox.Show("ConnectTCP.cs; Location: public void SendMessage(string buff)" + e.Message);
             }
         }
-        public void SendMessage(string buff, ref TextWriter tWriter)
+        public void receiveMessage(ref string message)
         {
-            try
+            while (tReader.ReadLine() != null)
             {
-                tWriter.WriteLine(buff);
-                tWriter.Flush();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("ConnectTCP.cs; Line: 128;Can't write into netstream" + e.Message);
+                try
+                {
+                    message = tReader.ReadLine();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("ConnectTCP.cs; Location: receiveMessage(ref string message);Can't write into netstream" + e.Message);
+
+                }
             }
         }
     }

@@ -39,10 +39,10 @@
             this.MessageReceiver = new System.Windows.Forms.RichTextBox();
             this.MessageSender = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.RichBox_RemoteClient = new System.Windows.Forms.RichTextBox();
             this.listView_UserInfo = new System.Windows.Forms.ListView();
             this.User_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.User_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RichBox_RemoteClient = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -163,6 +163,16 @@
             this.panel3.Size = new System.Drawing.Size(806, 328);
             this.panel3.TabIndex = 2;
             // 
+            // RichBox_RemoteClient
+            // 
+            this.RichBox_RemoteClient.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.RichBox_RemoteClient.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RichBox_RemoteClient.Location = new System.Drawing.Point(372, 0);
+            this.RichBox_RemoteClient.Name = "RichBox_RemoteClient";
+            this.RichBox_RemoteClient.Size = new System.Drawing.Size(434, 328);
+            this.RichBox_RemoteClient.TabIndex = 1;
+            this.RichBox_RemoteClient.Text = "";
+            // 
             // listView_UserInfo
             // 
             this.listView_UserInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -186,16 +196,6 @@
             // 
             this.User_ID.Text = "User_ID";
             this.User_ID.Width = 132;
-            // 
-            // RichBox_RemoteClient
-            // 
-            this.RichBox_RemoteClient.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.RichBox_RemoteClient.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RichBox_RemoteClient.Location = new System.Drawing.Point(372, 0);
-            this.RichBox_RemoteClient.Name = "RichBox_RemoteClient";
-            this.RichBox_RemoteClient.Size = new System.Drawing.Size(434, 328);
-            this.RichBox_RemoteClient.TabIndex = 1;
-            this.RichBox_RemoteClient.Text = "";
             // 
             // Form1
             // 
