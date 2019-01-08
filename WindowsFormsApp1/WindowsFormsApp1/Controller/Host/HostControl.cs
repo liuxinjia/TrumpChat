@@ -78,6 +78,7 @@ namespace WindowsFormsApp1.Controller.Host
         private void HostControl_Load(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             //this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             //Login.localUser.LocalUser.Run_OpenDialogue();
         }
@@ -94,6 +95,10 @@ namespace WindowsFormsApp1.Controller.Host
             this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             Login.localUser.LocalUser.Run_OpenDialogue();
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+            this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run_OpenDialogue();
+>>>>>>> parent of cef4521... Start Chat again!
         }
     }
 }

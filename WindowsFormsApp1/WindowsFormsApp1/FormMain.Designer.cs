@@ -371,10 +371,14 @@
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.bunifuFlatButton1.Size = new System.Drawing.Size(14465, 66);
 =======
             this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
+>>>>>>> parent of cef4521... Start Chat again!
             this.bunifuFlatButton1.TabIndex = 0;
             this.bunifuFlatButton1.Text = "WayneRonny";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

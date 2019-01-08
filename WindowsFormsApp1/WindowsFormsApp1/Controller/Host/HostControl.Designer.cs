@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostControl));
             this.panel_chatTask = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.panel_loadmail = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -40,11 +39,14 @@
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
 =======
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+>>>>>>> parent of cef4521... Start Chat again!
             this.panel_mail03 = new System.Windows.Forms.Panel();
             this.panel_mail02 = new System.Windows.Forms.Panel();
             this.panel_mail01 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
@@ -58,13 +60,17 @@
             this.mailController1 = new WindowsFormsApp1.Controller.Host.MailController();
             this.panel_chatTask.SuspendLayout();
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+            this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.mailController1 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.panel_chatTask.SuspendLayout();
+>>>>>>> parent of cef4521... Start Chat again!
             this.panel_mail02.SuspendLayout();
             this.panel_mail01.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_chatTask
             // 
-            this.panel_chatTask.Controls.Add(this.panel_loadmail);
             this.panel_chatTask.Controls.Add(this.panel_mail03);
             this.panel_chatTask.Controls.Add(this.panel_mail02);
             this.panel_chatTask.Controls.Add(this.panel_mail01);
@@ -74,6 +80,7 @@
             this.panel_chatTask.Size = new System.Drawing.Size(1070, 339);
             this.panel_chatTask.TabIndex = 0;
             // 
+<<<<<<< HEAD
 <<<<<<< HEAD
             // panel_loadmail
             // 
@@ -181,6 +188,8 @@
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
             // 
+=======
+>>>>>>> parent of cef4521... Start Chat again!
             // panel_mail03
             // 
             this.panel_mail03.Location = new System.Drawing.Point(759, 21);
@@ -234,6 +243,7 @@
             this.panel2.TabIndex = 2;
 <<<<<<< HEAD
             // 
+<<<<<<< HEAD
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 30;
@@ -241,6 +251,8 @@
 =======
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
             // 
+=======
+>>>>>>> parent of cef4521... Start Chat again!
             // mailController2
             // 
             this.mailController2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -275,11 +287,14 @@
             this.Load += new System.EventHandler(this.HostControl_Load);
             this.panel_chatTask.ResumeLayout(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.panel_loadmail.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
 =======
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+>>>>>>> parent of cef4521... Start Chat again!
             this.panel_mail02.ResumeLayout(false);
             this.panel_mail01.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -296,12 +311,5 @@
         private MailController mailController2;
         private System.Windows.Forms.Panel panel_mail01;
         private MailController mailController1;
-        private System.Windows.Forms.Panel panel_loadmail;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel4;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton_StartChat;
     }
 }
