@@ -79,6 +79,7 @@ namespace WindowsFormsApp1.Controller.Host
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             //this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             //Login.localUser.LocalUser.Run_OpenDialogue();
         }
@@ -95,6 +96,10 @@ namespace WindowsFormsApp1.Controller.Host
             this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             Login.localUser.LocalUser.Run_OpenDialogue();
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+            this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run_OpenDialogue();
+>>>>>>> parent of cef4521... Start Chat again!
 =======
             this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             Login.localUser.LocalUser.Run_OpenDialogue();

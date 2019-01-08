@@ -372,10 +372,14 @@
             this.bunifuFlatButton1.selected = false;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.bunifuFlatButton1.Size = new System.Drawing.Size(14465, 66);
 =======
             this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
 >>>>>>> parent of c7c8852... Revert "Ready to chat"
+=======
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
+>>>>>>> parent of cef4521... Start Chat again!
 =======
             this.bunifuFlatButton1.Size = new System.Drawing.Size(2295, 28);
 >>>>>>> parent of cef4521... Start Chat again!

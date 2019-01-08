@@ -51,14 +51,20 @@ D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
 =======
+=======
+>>>>>>> parent of cef4521... Start Chat again!
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Bunifu_UI_v1.5.3.dll
+<<<<<<< HEAD
+>>>>>>> parent of cef4521... Start Chat again!
+=======
 >>>>>>> parent of cef4521... Start Chat again!
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Google.Protobuf.dll
 D:\c#\Chat\TrumpChat\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.dll
