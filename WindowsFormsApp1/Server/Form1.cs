@@ -208,6 +208,27 @@ namespace Server
             }
         }
 
+<<<<<<< HEAD
+=======
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                sockets.Close();
+                tAcceptMsg.Abort();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
         private void MessageSender_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -218,7 +239,11 @@ namespace Server
                     {
                         lock (this)
                         {
+<<<<<<< HEAD
                             MessageReceiver.Text += "Server: " + MessageSender.Text + "\n";
+=======
+                            MessageReceiver.Text += "Server: " + MessageSender.Text;
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
                             tWriter.WriteLine(MessageSender.Text);
 
                             /*another use receive the message*/
@@ -240,6 +265,10 @@ namespace Server
                     MessageBox.Show("Please connect one client first");
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
         }
     }
 }

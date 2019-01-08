@@ -27,8 +27,11 @@ namespace WindowsFormsApp1.Controller.Host
                 return;
             Panel[] mailPanel = { panel_mail01, panel_mail02, panel_mail03 };
 
+<<<<<<< HEAD
             bool isAdded = false;
 
+=======
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             foreach (Panel mPanel in mailPanel)
             {
                 if (mPanel.Controls.Count == 0)
@@ -36,6 +39,7 @@ namespace WindowsFormsApp1.Controller.Host
                     foreach(User f in Login.localUser.Friends)
                     {
                         if (string.Equals(f.NickName, friendsname))
+<<<<<<< HEAD
                         {
                             mPanel.Controls.Add(CreateMailControl(f));
                             lastFriend = friendsname;
@@ -46,6 +50,11 @@ namespace WindowsFormsApp1.Controller.Host
                 }
                 if (isAdded == true)
                     break;
+=======
+                            mPanel.Controls.Add(CreateMailControl(f));
+                    }
+                }
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             }
         }
 
@@ -58,12 +67,17 @@ namespace WindowsFormsApp1.Controller.Host
         {
             MailController newControl = new MailController();
             newControl.Dock = DockStyle.Fill;
+<<<<<<< HEAD
             newControl.Contactfriend = friendInfo;
+=======
+            newControl.Contacfriend = friendInfo;
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             return newControl;
         }
 
         private void HostControl_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             //this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
             //Login.localUser.LocalUser.Run_OpenDialogue();
         }
@@ -76,6 +90,10 @@ namespace WindowsFormsApp1.Controller.Host
             // panel_loadmail.Controls.Clear();
             panel_loadmail.Visible = false;
 
+=======
+            this.Subscribe_OpenDialogue(Login.localUser.LocalUser);
+            Login.localUser.LocalUser.Run_OpenDialogue();
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
         }
     }
 }

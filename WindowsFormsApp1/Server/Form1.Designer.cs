@@ -151,6 +151,7 @@
             this.MessageSender.TabIndex = 0;
             this.MessageSender.Text = "";
             this.MessageSender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MessageSender_KeyPress);
+<<<<<<< HEAD
             // 
             // panel3
             // 
@@ -196,6 +197,8 @@
             // 
             this.User_ID.Text = "User_ID";
             this.User_ID.Width = 132;
+=======
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             // 
             // Form1
             // 

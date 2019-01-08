@@ -31,17 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostControl));
             this.panel_chatTask = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.panel_loadmail = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton_StartChat = new Bunifu.Framework.UI.BunifuFlatButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+=======
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             this.panel_mail03 = new System.Windows.Forms.Panel();
             this.panel_mail02 = new System.Windows.Forms.Panel();
             this.panel_mail01 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
             this.mailController1 = new WindowsFormsApp1.Controller.Host.MailController();
@@ -49,6 +53,11 @@
             this.panel_loadmail.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+=======
+            this.mailController2 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.mailController1 = new WindowsFormsApp1.Controller.Host.MailController();
+            this.panel_chatTask.SuspendLayout();
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             this.panel_mail02.SuspendLayout();
             this.panel_mail01.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +74,7 @@
             this.panel_chatTask.Size = new System.Drawing.Size(1070, 339);
             this.panel_chatTask.TabIndex = 0;
             // 
+<<<<<<< HEAD
             // panel_loadmail
             // 
             this.panel_loadmail.BackColor = System.Drawing.Color.White;
@@ -87,6 +97,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1070, 56);
             this.panel3.TabIndex = 3;
+=======
+            // panel_mail03
+            // 
+            this.panel_mail03.Location = new System.Drawing.Point(759, 21);
+            this.panel_mail03.Name = "panel_mail03";
+            this.panel_mail03.Size = new System.Drawing.Size(300, 300);
+            this.panel_mail03.TabIndex = 2;
+            // 
+            // panel_mail02
+            // 
+            this.panel_mail02.Controls.Add(this.mailController2);
+            this.panel_mail02.Location = new System.Drawing.Point(387, 21);
+            this.panel_mail02.Name = "panel_mail02";
+            this.panel_mail02.Size = new System.Drawing.Size(300, 300);
+            this.panel_mail02.TabIndex = 1;
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             // 
             // bunifuFlatButton_StartChat
             // 
@@ -162,6 +188,7 @@
             this.panel_mail03.Size = new System.Drawing.Size(300, 300);
             this.panel_mail03.TabIndex = 2;
             // 
+<<<<<<< HEAD
             // panel_mail02
             // 
             this.panel_mail02.Controls.Add(this.mailController2);
@@ -188,16 +215,31 @@
             // 
             // panel2
             // 
+=======
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 339);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(371, 305);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(371, 339);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(699, 305);
             this.panel2.TabIndex = 2;
+<<<<<<< HEAD
             // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 30;
             this.bunifuElipse1.TargetControl = this.bunifuFlatButton_StartChat;
+=======
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             // 
             // mailController2
             // 
@@ -232,9 +274,12 @@
             this.Size = new System.Drawing.Size(1070, 644);
             this.Load += new System.EventHandler(this.HostControl_Load);
             this.panel_chatTask.ResumeLayout(false);
+<<<<<<< HEAD
             this.panel_loadmail.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+=======
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
             this.panel_mail02.ResumeLayout(false);
             this.panel_mail01.ResumeLayout(false);
             this.ResumeLayout(false);

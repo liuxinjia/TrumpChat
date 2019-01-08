@@ -28,6 +28,8 @@ namespace WindowsFormsApp1.Controller.Host
         public bool Connected { get => connected; }
 
 
+        public User Contacfriend = new User();
+
         public MailController()
         {
             InitializeComponent();
@@ -47,6 +49,10 @@ namespace WindowsFormsApp1.Controller.Host
                     sTemp = tcpClient.tReader.ReadLine();
                     if (sTemp.Length != 0)
                     {
+<<<<<<< HEAD
+=======
+                        //CreateChatLabel(sTemp);
+>>>>>>> parent of c7c8852... Revert "Ready to chat"
                         InvokeCreateButton(sTemp);
                     }
                     justConnectedBefore = true;
@@ -173,6 +179,18 @@ namespace WindowsFormsApp1.Controller.Host
             try
             {
                 friendLabel_name.Text = Contactfriend.NickName;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+
+        private void MailController_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                friendLabel_name.Text = Contacfriend.NickName;
             }
             catch(Exception ex)
             {
